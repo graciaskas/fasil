@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <link rel="stylesheet" href="/css/main.css" type="text/css">  
+       <style type="text/css">
+           * ,
+           *:before,
+            *:after{
+               padding: 0px;
+               margin: 0px;
+               box-sizing: border-box !important;
+               font-family: "Poppins",-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+            }
+            p { 
+               font-size: 9px !important;
+            }
+            body { 
+                padding: 0px 20px !important;
+                width: 100%;
+                height: 100%;
+            }
+            .header { 
+               border-bottom: 1px solid #000;
+               padding-bottom: 6px;
+               clear: both;
+            }
+            .flex {
+               display: flex !important;
+               display: -webkit-flex !important;
+            }
+            .w-30{
+                width: 30%;
+            }
+            .w-60{
+                width: 60%;
+            }
+   
+            .text-center { 
+                text-align: center;
+            }
+            .headTitle{
+               background: #000;
+               color: #fff !important;
+               font-weight: bolder !important;
+               padding: 3px 5px;
+               border-radius: 3px;
+            }
+            
+            .infos { 
+                margin-top: 5px;
+                display: block;
+                width: 100%;
+                clear: left;
+                height: 90px;
+            }
+
+            .image { 
+                float: left;
+                width: 15%;
+                height: 90px;
+                border-radius: 3px;
+                border: 1px solid #efefef;
+                overflow: hidden;
+            }
+            
+            img { 
+               width: 100%;
+               height: 100%;
+            }
+            .info{ 
+               width: 80%;
+               float: left;
+            }
+
+            .info .info-line { 
+                display: inline-block;
+                width: 100%;
+            }
+            @media print {
+            *,
+            *:before,
+            *:after {
+               text-shadow: none !important;
+               -webkit-box-shadow: none !important;
+               box-shadow: none !important;
+               box-sizing: border-box !important;
+            }
+         }
+       </style>
+    </head>
+    <body>
+        <header class="flex header">
+            <div style="width: 25%; text-align: left;">
+                <img src="data:image/png;base64,<%=logo_mairie%>" style="height: 70px; width:60px"/>
+            </div>
+            <div class="text-center" style="width: 70%;">
+                <h4 style="font-size: 12px !important;">REPUBLIQUE DEMOCRATIQUE DU CONGO</h4>
+                <h4 style="font-size: 12px !important;">PROVINCE DU NORD-KIVU</h4>
+                <h4 style="font-size: 12px !important;">MAIRIE DE GOMA</h4>
+            </div>
+            <div style="width: 25%; text-align: right;">
+               <img src="data:image/png;base64,<%=logo_congo%>" style="height: 60px; width:60px"/>
+            </div>
+        </header>
+        <div class="text-center" style="padding: 5px 0px;">
+            <h4 style="font-size: 10px !important;">FICHE D'IDENTIFICATION DU CHAROI MOTO</h4>
+        </div>
+
+
+        <section class="driver">
+            <div class="headTitle">
+                <p>INFORMATION SUR L'ORGANISATION</p>
+            </div>
+            <div class="infos">
+                <div class="image">
+                    <img src="<%=imageExists(driver.image)%>" />
+                </div>
+                <div class="info">
+                   <div class="info-line" style="margin-left: 30px;">
+                        <p>NOM: MICROCOM (GOMA)</p>
+                        <p>ADRESSE: 19, AV des orchidées 2, Commune de Goma</p>
+                        <p>RCCM: CD/KIN/RCCM/14-B-3361</p>
+                        <p>ID NAT: 01-G6100-A48228X</p>
+                        <p>NUMERO DE L'AUTOCOLLANT :  <%=driver.gillet%></p>
+                        <p>CONTACTS : + (243) 998 252 908, microcom@virunga-rdc.net</p>
+                   </div>
+                   <div class="info-line">
+               </div>
+                </div>
+               
+            </div>
+        </section>
+        <br>
+        <section class="driver">
+            <div class="headTitle">
+                <p>INFORMATION SUR L'ENGIN</p>
+            </div>
+            <section class="infos">
+                <div class="image">
+                    <img src="<%=imageExists(engine.image)%>" />
+                </div>
+                <div class="info">
+                    <div class="info-line" style="margin-left: 30px;">
+                        <p>NOM DE LA MARQUE :  HONDA</p>
+                        <p>NUMERO DU MODEL  :  1CE125</p>
+                      
+                        <p>NUMERO DU MOTEUR :  SDH152FMI-3/D3328783</p>
+                        <p>PLAQUE D'IMMATRICULATION :  235AN19</p>
+                        <p>NUMERO CHASSIS : XLALPCJD2D334858</p>
+                        <p>COULEUR : Rouge</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <% if(owner != null ) { %>
+            <section class="driver" style="margin-top: 10px;">
+                <div class="headTitle">
+                    <p>INFORMATION SUR LE PROPRIETAIRE</p>
+                </div>
+                <section class="infos">
+                    <div class="image">
+                        <img src="<%=owner.image%>" />
+                    </div>
+                    <div class="info">
+                        <div class="info-line" style="margin-left: 30px;">
+                            <p>NOM COMPLET / TITRE : <%= owner.names.toUpperCase() %></p>
+                            <!-- <p>CARTE ID : <%=driver.address.id_no%></p> -->
+                            <p>ADDRESSE : 
+                                <%=owner.address.province.toUpperCase()%>,  <%=owner.address.commune.toUpperCase()%>/<%=owner.address.quartier.toUpperCase()%>/<%=owner.address.avenue.toUpperCase()%> n° <%=owner.address.no%></p>
+                            <p>PERSONNE PHYSIQUE : <%=owner.isPP ? "OUI" : "NON"%></p>
+                            <p>CONTACTS : <%=owner.phone%>, <%=owner.email%></p>
+                       </div>
+                    </div>
+                </section>
+            </section>
+        <% } %>
+
+        <section class="" style="clear: both; margin-top: 10px;">
+            <div class="headTitle"></div>
+            <div class="infos">
+                <div class="image" style="border: none;">
+                    <img src="<%=gillet.image%>" style="width: 60px; height: 60px; margin-top: 15px;"/>
+                </div>
+            </div>
+            <div class="info" style="float: right !important;width: 40%;">
+                <p>Fait à Goma le  ........../........../2022</p>
+                <p>Commissaire Supérieur de la commune de Goma</p> 
+                <p> MUSONGUWA Lububu</p>
+                <p style="margin-top: 10px;">Signature: </p>
+            </div>
+          
+        </section>
+
+    </body>
+</html>

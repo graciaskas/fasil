@@ -1,0 +1,44 @@
+
+###
+GET http://localhost:8020/api/v1/motor/gillets/?database=orizon&verify=POOO26
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWRmOGY5NGJmODE4YmE0ODYwZGRjOWQiLCJyb2xlIjoic3VwZXJBZG1pbiIsInRpdGxlIjp7Im5hbWUiOiJTdXBlciBBZG1pbmlzdHJhdGV1ciIsInZhbHVlIjoiU0EiLCJhY2Nlc3MiOiJzdXBlckFkbWluIn0sImlhdCI6MTY0MjY2MzUxNiwiZXhwIjoxNjQyNjkyMzE2fQ.nBBjEVFKVGRPH_HRN-6e3ouaccu75PyofjpkwSmRf7E
+####
+POST  http://localhost:8020/api/v1/motor/gillets/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWQ3MDFhNDQwZWY0NjczZTYyYWU1NjAiLCJyb2xlIjoic3VwZXJBZG1pbiIsInRpdGxlIjoiQ0VPIiwiaWF0IjoxNjQxODg3MjA5LCJleHAiOjE2NDE5MTYwMDl9.4dsnVicXxSkcfJ7Ie8HFc2J75KzkofatL87BlcoEmFc
+
+{
+    "model" : {
+        "nom" : "Nord Kivu",
+        "code" : "NK",
+        "mairie"
+        "cheflieu": "Goma",
+        "gouverneur" : "Gracias Kasongo"
+    },
+    "database":"odoo"
+}
+
+####
+PUT http://localhost:8020/api/v1/motor/gillets/61dd5048d7b546eef7b692b3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWQ3MDFhNDQwZWY0NjczZTYyYWU1NjAiLCJyb2xlIjoic3VwZXJBZG1pbiIsInRpdGxlIjoiQ0VPIiwiaWF0IjoxNjQxODg3MjA5LCJleHAiOjE2NDE5MTYwMDl9.4dsnVicXxSkcfJ7Ie8HFc2J75KzkofatL87BlcoEmFc
+
+{
+    "model" : {
+        "nom" : "Nord Kivu",
+        "code" : "NK",
+        "cheflieu": "Goma",
+        "gouverneur" : "Danny Mapathi"
+    },
+    "database":"odoo"
+}
+####
+DELETE   http://localhost:8020/api/v1/motor/gillets/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWQ3MDFhNDQwZWY0NjczZTYyYWU1NjAiLCJyb2xlIjoic3VwZXJBZG1pbiIsInRpdGxlIjoiQ0VPIiwiaWF0IjoxNjQxOTM3MjE1LCJleHAiOjE2NDE5NjYwMTV9.DjzfzKLiUbAi2YguQJgjjSIJofS9CZlrU7pQ8TLxrUg
+
+{
+    "database":"odoo"
+}
+
+

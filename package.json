@@ -1,0 +1,25 @@
+{
+  "name": "zeslap",
+  "version": "1.0.0",
+  "description": "ZeSlap ERP",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm start --prefix client",
+    "server": "npm start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/graciaskas/myProject.git"
+  },
+  "author": "Kas gracias Tmb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/graciaskas/myProject/issues"
+  },
+  "homepage": "https://github.com/graciaskas/myProject#readme",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}
