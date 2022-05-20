@@ -30,21 +30,28 @@ module.exports = async (database, req, res) =>
 
 
         if(req && res) { 
-            const { data} = await axios.get("http://localhost:8020/database/list");
-            const dbFound = data.filter( db => db.name == database );
-            const exists = dbFound.length > 0 ? true : false;
-            if(!exists) { 
-                return res.json({ 
-                    message : "Can not connect to this database.Please select an available one!", 
-                    type : "danger"
-                })
-            } else { 
-                await reConnect()
-            }        
+            try {
+                axios.get("http://localhost:8020/database/list")
+                .then( data => {
+                    const found = data.data.filter( db => db.name == database ).length;
+                    console.log(data.data)
+                    if(found == 0) { 
+                        return res.json({ 
+                            message : "Can not connect to this database.Please select an available one!", 
+                            type : "danger"
+                        })
+                    } else { 
+                        reConnect()
+                    }   
+                }).catch(e => {
+                    console.log(e);
+                }) 
+            } catch (error) {
+                console.log(error);
+            }
         } else { 
             await reConnect();
         }
-
 
     } catch (error) {
         console.log(error);

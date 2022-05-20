@@ -32,7 +32,7 @@ const login = async (req,res) => {
                 expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 60 * 60 * 1000),
                 httpOnly: true
             }
-            res.status(200).json({ token, cookieOptions });
+            return res.status(200).json({ token, cookieOptions });
         } else { res.status(401).json({ message: 'Incorrect password!',type: "danger" });}
     //Exception
 	} catch (error) {
