@@ -1,0 +1,20 @@
+body
+{padding: 0;
+margin: 0;font-family: 'Century Gothic Medium', 'Arial Narrow', Arial, sans-serif;background: #007baa;	color: #fff;	overflow: hidden;}
+.container{width: 75%;margin: 15% auto;padding: 10px;text-align: center;}
+.progress-bar
+{
+    width: 40%;
+    background: #fff;
+    margin: 5% auto;
+   height: 2px;
+    border-radius: 25px; 
+    position: relative;
+}
+.progress-bar-filler{
+    background: rgb(168, 162, 162);
+   height: 2px;
+}
+.Text p,.Text h4{display: inline-block;}
+.Text{margin-top: -10px;}
+#file{margin-right: 5px;}

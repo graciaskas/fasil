@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/graciaskas/myProject#readme",
   "dependencies": {
-    "concurrently": "^5.2.0"
+    "concurrently": "5.2.0"
   }
 }
