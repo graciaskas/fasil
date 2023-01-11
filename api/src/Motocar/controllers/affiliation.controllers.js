@@ -21,7 +21,7 @@ exports.createAffiliation = async (req, res) => {
           commune : "-",
           quartier : "-",
           avenue : "-",
-          num: "-"
+          num: 0
       },
     }
   }
