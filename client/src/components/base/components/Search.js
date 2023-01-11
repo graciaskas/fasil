@@ -12,18 +12,17 @@ import { useHistory, useLocation } from "react-router";
 
  const Search = (props) => {
 
-    const { filters, data, location, context, viewType, searching } = props;
+    const { filters, data, location, context, viewType, searching, updateState, api } = props;
     
     const { pathname, search } = location;
     const { handleSearch } = useContext(context);
     const [ searchValue, setSearchValue ] = useState(null);
-    const [ display, setDisplay ] = useState("none");
-
+    const [display, setDisplay] = useState("none");
 
     const handleSearch_ = value => {
         setDisplay("block");
         setSearchValue(value);
-        if(value == "") { 
+        if(value === "") { 
             setDisplay("none"); 
             return handleSearch(value);
         }  
@@ -38,9 +37,10 @@ import { useHistory, useLocation } from "react-router";
             return handleSearch(e);
         }
     };
-
+     
     const searchMemo = useMemo(() => searchValue, [searchValue]);
-    
+    const dataMemo = useMemo(() => data, [data]);
+
     if(searching) return (
         <div className="headPageSearch">
             <form>
@@ -57,8 +57,17 @@ import { useHistory, useLocation } from "react-router";
           
             <div className="filter-container">
                 <div className="row">
-                    <Filters data={filters} location={pathname} search={search} context={context}/>
-                    <Displayers data={[]} viewType={viewType} location={pathname}search={search} />
+                    <Filters data={filters} location={pathname} search={search} context={context} />
+                    
+                    <Displayers
+                        data={dataMemo}
+                        viewType={viewType}
+                        location={pathname}
+                        search={search}
+                        context={context}
+                        updateState={updateState}
+                        api={api}
+                    />
                 </div>
             </div>
             

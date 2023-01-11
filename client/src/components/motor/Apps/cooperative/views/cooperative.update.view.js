@@ -3,7 +3,7 @@ import LoadView from "components/base/functions/loadView";
 
 import { AppContext } from "components/motor/context/app.context";
 import { getUserInfo } from "components/base/functions/all";
-import { URI } from "components/base/auth/access.token";
+import { URI } from "components/motor/api/uri";
 
 //**--- Components */
 import Datalist from "components/base/components/Datalist";

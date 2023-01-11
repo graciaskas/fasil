@@ -15,8 +15,7 @@ import { GilletContext } from "./context/gillet.js";
 import { AppContext } from "components/motor/context/app.context.js";
 
 
-
-
+import { URI } from "components/motor/api/uri";
 //**-- application data */
 const Columns = [
     'Id',
@@ -54,21 +53,40 @@ const GilletsListGrids = ({ data }) => {
 
     const history = useHistory();
     const { location } = useHistory();
+     const { token, database } = useContext(AppContext);
+
 
     //**-- MainApp context values */
     const {
         gillets,
+        setGillets,
         setLoadGillets,
         associations
-    } = useContext(AppContext);
+     } = useContext(AppContext);
+     
 
+    //Create gillets handler from the app context;
     const { createGillet } = useContext(GilletContext);
+     
+    const apiObject = {
+        url: URI,
+        pathname: "gillets",
+        token,
+        params: {
+            database,
+        }
+    };
 
     
 
     useEffect(() => { 
         setLoadGillets(true);
-    },[]);
+    }, []);
+
+     
+    if (!gillets) return null;
+     
+
 
     return(
         <div className="page" id="page">
@@ -98,17 +116,19 @@ const GilletsListGrids = ({ data }) => {
                 </div>
 
                 <Search 
-                    data={[]}
+                    data={gillets}
                     searching={true}
                     viewType="both"
                     location={ location }
                     context={GilletContext}
-                    filters = { []} 
+                    filters={[]}
+                    api={apiObject}
+                    updateState={setGillets}
                 />
             </div>
 
             <Route path="/motor/parametres/gillets" exact>
-                <GilletsListGrids data={gillets}/>
+                <GilletsListGrids data={gillets.data}/>
             </Route>
 
             <Route path="/motor/parametres/gillets/create" exact>

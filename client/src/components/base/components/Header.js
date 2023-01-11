@@ -2,11 +2,10 @@ import React,{ useContext, useEffect, useRef, useState } from "react"
 import { Link, useHistory} from 'react-router-dom';
 
 import store from "../store.apps.data";
-import { coreContext } from "../Context";
 import { userInfos } from "../auth/access.token";
 
-import { RiChatSmile2Fill, RiMessage2Fill, RiMessageFill, RiNotification3Fill } from "react-icons/ri";
-import {  FaUserCircle, FaCommentSlash, FaFacebookMessenger} from "react-icons/fa";
+import { RiMessage2Fill, RiNotification3Fill } from "react-icons/ri";
+import {  FaUserCircle, FaFacebookMessenger} from "react-icons/fa";
 
 import Notification from "./Header/Notification";
 import Branding from "./Header/Branding";
@@ -15,7 +14,6 @@ import Navlink from "./Header/NavLink";
 
 const Header  =  props => {
 
-    const { header } = useContext(coreContext);;
 
     const [ apps, setApps] = useState(store);
     const [ userData, setUserData ] = useState([]);
@@ -48,7 +46,7 @@ const Header  =  props => {
 
     return(
         <>
-            <div className="header navbar navbar-expand-md"  id="AppHeader"  ref = { header }
+            <div className="header navbar navbar-expand-md"  id="AppHeader"  
                 style = { isMain === true ? { backgroundColor : "transparent" } : { } }>
 
                 <Branding app = { app } />

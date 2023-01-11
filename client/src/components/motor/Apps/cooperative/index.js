@@ -16,25 +16,28 @@ import CoopertativeUpdate from "./views/cooperative.update.view";
 import CooperativerView from "./views/cooperative.view";
 
 
-
 import { CooperativeContext } from "./contexts";
 import { AppContext } from "components/motor/context/app.context";
+import { URI } from "../../api/uri";
 
 
 
-const AssociationsListGrid = ({data}) => { 
+const Handler = ({data}) => { 
     const {  search } = useLocation();
     const { url, query } = parseUrl(search);
+
+    if (!data) return null;
     
     let isViewType = query.viewType ? true : false;
     let viewType = 'grid';
 
-    if(isViewType) viewType  = query.viewType; 
-
-
-    if(viewType === "list") return <CooperativesList data={ data } /> 
+    if (isViewType)
+        viewType = query.viewType; 
+    
+    if (viewType === "list")
+        return <CooperativesList data={data.data} /> 
         
-    return <CooperativeGrids data= { data } />
+    return <CooperativeGrids data= { data.data } />
 };
 
 const Init = ({ app, name }) =>  {
@@ -45,9 +48,18 @@ const Init = ({ app, name }) =>  {
 
     const id = query.q ? query.q : "";
     
-    const { setLoadAssociations, associations } = useContext(AppContext)
+    const { setLoadAssociations, associations, database, token } = useContext(AppContext)
     const history = useHistory();
     const { location } = history;
+    
+    const apiObject = {
+        url: URI,
+        pathname: "affiliations",
+        token,
+        params: {
+            database
+        }
+    };
 
     useEffect(() => { 
         setLoadAssociations(true);
@@ -113,14 +125,26 @@ const Init = ({ app, name }) =>  {
 
                     {/**-- Search & Filter Component   **/}
                     <Route path="/motor/cooperatives" exact>
-                        <Search data= { associations }viewType="both"location= { location } filters = {[]} context={CooperativeContext} searching={true} />
+                        {
+                            associations != null ? (
+                                <Search
+                                    data={associations}
+                                    viewType="both"
+                                    location={location}
+                                    filters={[]}
+                                    context={CooperativeContext}
+                                    searching={true}
+                                    api={apiObject}
+                                />
+                            ):null
+                        }
                     </Route>
                 </div>{/** End HeadPage */}
 
 
                 {   /***-- Application routes   ---**/ }
                     <Route path="/motor/cooperatives" exact>
-                        <AssociationsListGrid data = {associations} />
+                        <Handler data = {associations} />
                     </Route>
 
                     <Route path="/motor/cooperatives/create" exact>

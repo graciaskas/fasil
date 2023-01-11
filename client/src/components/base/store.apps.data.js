@@ -4,8 +4,9 @@ import React from 'react';
 import Motor from 'components/base/icons/survey.png';
 import Settings from'components/base/icons/settings.png';
 import Messages from "components/base/icons/messages.png";
+import Resume from "components/base/icons/mail_push.png";
 
-export default  [
+var data =   [
     {
         name:"Messages",
         links : [],
@@ -27,6 +28,16 @@ export default  [
         path : '',
         active: true
     },
+    {
+        name: 'Resume',
+        links: [
+            { name: 'cvs', links: [], groupAccess: ['admin', 'user', 'superAdmin'] }
+        ],
+        icon: Resume,
+        main:'cvs',
+        path : '',
+        active: true
+    },
 
    
     {
@@ -42,3 +53,4 @@ export default  [
         active: true
     }, 
 ];
+export default data;

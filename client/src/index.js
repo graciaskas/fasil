@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Provider from "contexts/coreContext";
-// import * as serviceWorker from './serviceWorker';
+import Provider from "components/base/Context";
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -13,4 +13,4 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-// serviceWorker.unregister();
+serviceWorker.unregister();

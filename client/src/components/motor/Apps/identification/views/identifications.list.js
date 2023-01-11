@@ -14,8 +14,8 @@ function IdentificationList ({ data }) {
             rows.forEach( (record, i) => { 
                 const row  = [];
                 let type = 'Taxi'
-                if(record.type == 2) type = 'Privé'
-                if(record.type == 3) type = 'Entreprise'
+                if(record.type === 2) type = 'Privé'
+                if(record.type === 3) type = 'Entreprise'
                 row.push([i + 1,record._id]);
                 row.push(record.names);
                 row.push(record.affiliation);

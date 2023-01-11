@@ -3,7 +3,7 @@ import { Link, Route, useHistory } from 'react-router-dom';
 import { SettingsContext } from 'components/settings/context/settings.context';
 import Search from 'components/base/components/Search';
 import Message from 'components/base/components/Message';
-import { coreContext } from 'components/base/Context';
+import { CoreContext } from 'components/base/Context';
 import Create from "./views/company.create.view";
 import { URI } from 'components/settings/api';
 import { getUserInfo } from 'components/base/functions/all';
@@ -14,7 +14,7 @@ import companyModel from './models/company.model';
 const Init = (props) => {
 
    const { location } = useHistory();
-   const { message, setMessage } = useContext(coreContext);
+   const { message, setMessage } = useContext(CoreContext);
    const { database, token } = getUserInfo();
 
    const create = async () => { 

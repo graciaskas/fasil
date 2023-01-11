@@ -44,21 +44,21 @@ const dataChart = {
 }
 
 const Icon = ({ name }) => { 
-    if(name == 'motard') return <FaUsers />;
-    if(name == 'association') return <FaHouseDamage />;
-    if(name == 'moto') return <FaBiking />;
-    if(name == 'identification') return <FaBook />;
+    if(name === 'motard') return <FaUsers />;
+    if(name === 'association') return <FaHouseDamage />;
+    if(name === 'moto') return <FaBiking />;
+    if(name === 'identification') return <FaBook />;
     return null;
 };
 
 const Chart = ({ chartype, data, options }) => { 
-  if(chartype == 'line') return <Line data={data} options={options}/>;
-  if(chartype == 'bar') return <Bar data={data} options={options}/>;
-  if(chartype == 'bubble') return <Bubble data={data} options={options}/>;
-  if(chartype == 'doughnut') return <Doughnut data={data} options={options}/>;
-  if(chartype == 'pie') return <Pie data={data} options={options}/>;
-  if(chartype == 'scatter') return <Scatter data={data} options={options}/>;
-  if(chartype == 'horizontal') return <HorizontalBar data={data} options={options}/>;
+  if(chartype === 'line') return <Line data={data} options={options}/>;
+  if(chartype === 'bar') return <Bar data={data} options={options}/>;
+  if(chartype === 'bubble') return <Bubble data={data} options={options}/>;
+  if(chartype === 'doughnut') return <Doughnut data={data} options={options}/>;
+  if(chartype === 'pie') return <Pie data={data} options={options}/>;
+  if(chartype === 'scatter') return <Scatter data={data} options={options}/>;
+  if(chartype === 'horizontal') return <HorizontalBar data={data} options={options}/>;
   return null;
 };
 
@@ -81,7 +81,7 @@ const Dmost = (props) => {
 
     return(
         <>
-           <div className="col-lg-6 col-md-6 col-sm-12">
+           <div className="col-lg-6 col-md-12 col-sm-12">
                 <div className="d-most">
                     <div className="most-h">
                         <span><Icon name={name}/></span>

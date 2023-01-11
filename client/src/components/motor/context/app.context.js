@@ -4,8 +4,9 @@ import axios from "axios";
 import Message from "components/base/components/Message";
 import Loading from "components/base/components/Loading";
 import { getUserInfo } from "components/base/functions/all";
-import { URI } from "components/base/auth/access.token";
+import { URI } from "../api/uri";
 import { resetModel } from "components/base/functions/resetModel";
+import { CoreContext } from "components/base/Context";
 
 export const AppContext = React.createContext();
 
@@ -15,7 +16,7 @@ const Provider = ({ children }) => {
    //database and token
    const { database, token } = getUserInfo();
    //loading effect state variables
-   const [ loading, setLoading ] = useState(false);
+   const { setLoading,loading } = useContext(CoreContext);
    //Message report state variables
    const [ message, setMessage ] = useState({
       message : null,
@@ -25,24 +26,35 @@ const Provider = ({ children }) => {
    const bearer = "Bearer "+token;
 
    //**-- App data state variables */
-   const [ drivers, setDrivers ] = useState([]);
+   const [ drivers, setDrivers ] = useState(null);
    const [ loadDrivers, setLoadDrivers ] = useState(false);
 
-   const [ gillets, setGillets ] = useState([]);
+   const [ gillets, setGillets ] = useState(null);
    const [ loadGillets, setLoadGillets ] = useState(false);
 
-   const [ associations, setAssociations ] = useState([]);
+   const [ associations, setAssociations ] = useState(null);
    const [ loadAssociations, setLoadAssociations ] = useState(false);
 
-   const [ utilisateurs, setUtilisateurs ] = useState([]);
-   const [ loadUtilisateurs, setLoadUtilisateurs ] = useState(false);
+   const [ utilisateurs, setUtilisateurs ] = useState(null);
+   const [loadUtilisateurs, setLoadUtilisateurs] = useState(false);
+   const [provinces, setProvinces] = useState(null);
+   
+
+
+   const getProvinces = async function () {
+      try {
+         
+      } catch (error) {
+         
+      }
+   };
 
 
    /**
     * This function is used to fetch gillets from server and returns a state data
     * @param {*} setter setter for a  state variable 
     * @param {*} type gillet type
-    */
+   */
    const getGillets = async (setter, type) => { 
       try {
          setLoading(true);
@@ -51,10 +63,12 @@ const Provider = ({ children }) => {
          //Request
          const request  = await fetch( reqUrl ,{ method : "GET",headers : { "Authorization": bearer }});
          const data = await request.json();
-         if(data.type !== "danger")  { 
-            setGillets(data.data); // Sett data
+
+         console.log(data);
+         if(data.type === "success")  { 
+            setGillets(data.result); // Sett data
             if(setter) { 
-               setter(data.data);
+               setter(data.result);
             }
          }
          setLoading(false)
@@ -68,16 +82,15 @@ const Provider = ({ children }) => {
    const getAssociations = async () => { 
       setLoading(true);
       try {
-         const request = await fetch(`${URI}/affiliations/?database=${database}`,{ headers: { "Authorization" : bearer }});
-         const result = await request.json();
-         if(result.type == "danger") setMessage({ message : result.message, type : result.type });
-        
-         if(result.data)  { 
-            setLoading(false);
-            return setAssociations(result.data);
-         }
+         const { data } = await axios.get(`${URI}/affiliations/?database=${database}`, {
+            headers: { "Authorization": bearer }
+         });
+         const { result, message, type } = data
+         if (type === "danger") return  setMessage({ message, type });
+         setLoading(false);
+         setAssociations(result);
       } catch (error) { setMessage({ message : ""+error, type : 'danger' }) }
-  };
+   };
 
 /**
  * This function is used for fetching data drivers from server
@@ -95,18 +108,17 @@ const Provider = ({ children }) => {
          if(!owner && engine) baseUrl += "&engine=true";
          if(owner && engine) baseUrl += "&engine=true&owner=true";
 			const { data } = await axios.get(baseUrl, { headers: { Authorization: bearer },});
-         const { message, type } = data;
-         if(type == "danger") setMessage({ message, type });
+         const { message, type, result } = data;
+         if (type === "danger") setMessage({ message, type });
 			//Bind data
-			setLoading(false);
+         setLoading(false);
          //if success response type
-			if(type == "success")  { 
-            setDrivers(data.data);
-            if(setter) { 
-               setter(data.data);
-            }
+         if (type === "success") {
+            setDrivers(result);
+            if (setter) setter(result);
          }
-		} catch (error) {
+      } catch (error) {
+         console.error(error);
 			setMessage({ message: ""+error, type: "danger" });
 		}
 	};
@@ -121,12 +133,13 @@ const Provider = ({ children }) => {
       try {
 			setLoading(true);
 			const { data } = await axios.get(URI + '/users/?&database=' + database, { headers: { Authorization: bearer },});
-         const { message, type } = data;
+         const { message, type, result } = data;
 			setMessage({ message, type }); // UI Message
 			setLoading(false); //Close loader
-			return  setter ? setter(data.data) : setUtilisateurs(data.data); // Return data
+			return  setter ? setter(result) : setUtilisateurs(result); // Return data
 		} catch (error) {
-			console.error(error);
+         console.error(error);
+         setMessage({ message: error.message, type:"danger" }); // UI Message
 		}
    };
 
@@ -139,11 +152,12 @@ const Provider = ({ children }) => {
       try {
          setLoading(true);
          const { data } = await axios.get(URI + '/engines/?&database=' + database, { headers: { Authorization: bearer },});
-         const { message, type } = data;
+         const { result } = data;
          setLoading(false); //Close loader
-         return  setter ? setter(data) : data; // Return data
+         return  setter ? setter(result) : result; // Return data
       } catch (error) {
          console.error(error);
+         setMessage({ message: error.message, type:"danger" }); // UI Message
       }
    };
 
@@ -168,22 +182,22 @@ const Provider = ({ children }) => {
 
    //Effect on associations
    useEffect(() => {
-      if( loadAssociations == true ) getAssociations();
+      if( loadAssociations === true ) getAssociations();
    },[  loadAssociations  ]);
 
    //Effect on drivers
    useEffect(() => {
-      if( loadDrivers == true ) getDrivers();
+      if( loadDrivers === true ) getDrivers();
    },[  loadDrivers  ]);
 
    //Effect on gillets
    useEffect(() => {
-      if( loadGillets == true ) getGillets();
+      if( loadGillets === true ) getGillets();
    },[  loadGillets  ]);
    
    //Effect on users
    useEffect(() => {
-      if( loadUtilisateurs == true ) getUtilisateurs();
+      if( loadUtilisateurs === true ) getUtilisateurs();
    },[  loadUtilisateurs  ]);
 
 

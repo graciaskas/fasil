@@ -1,4 +1,4 @@
-/** 1.Margins**/
+/** 1.Margins minus **/
 .mt--1 {
 	margin-top: -1px !important;
 }
@@ -14,6 +14,13 @@
 .mt--5 {
 	margin-top: -5px !important;
 }
+.mt--6 {
+	margin-top: -6px !important;
+}
+.mt--7 {
+	margin-top: -7px !important;
+}
+
 
 .dropdown {
 	width: 30%;

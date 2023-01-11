@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import { parseUrl } from 'query-string';
 import Message from 'components/base/components/Message';
 import { IdentificationContext } from '../contexts/indentification.context';
-import { URI } from 'components/base/auth/access.token';
+import { URI } from 'components/motor/api/uri';
 import { getUserInfo } from 'components/base/functions/all';
 import LoadingDark from 'components/base/components/LoadingDark';
 
@@ -36,11 +36,15 @@ function View({ data }) {
             const Url= `${URI}/drivers/${id}/?database=${database}&engine=true&owner=true`
             const request = await fetch(Url,{ method: "GET", headers:{"Authorization":`Bearer ${token}`}});
             const data = await request.json();
+
+
+            console.log(data);
             //--- Set driver is proprietor -- 
             setContent(data.driver);
             setEngine(data.engine);
             setGillet(data.gillet);
             setLoadMotor(true);
+            //If data has owner then set owner;
             if(data.owner) setOwner(data.owner);
 
         } catch (error) { console.error(error); }

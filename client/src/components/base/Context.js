@@ -1,35 +1,28 @@
-import React, { useContext, useRef, useState, useEffect } from "react";
-import { getUserInfo } from "./functions/all";
-import { DB_URI } from "./auth/access.token";
-import { userInfos } from "./auth/access.token";
+import React, { useEffect, useState, } from "react";
+import Loading from "./components/Loading";
 
-export const coreContext = React.createContext();
+
+export const CoreContext = React.createContext();
 
 const Provider = ({ children }) => {
-
-    const header = useRef();
-    //**-- GET DOM ELEMENTS */
-    const headerPage = useRef();
-    const bodyContainer = useRef();
-    const actionBar = useRef();
-    const mainContainer = useRef();;
     const [ loading, setLoading ] = useState(false);
     const [ message, setMessage ] = useState({ 
         message : null,
         type : null
     })
     // userInfos_()
-    const value = { 
-        loading, setLoading,
-        message, setMessage,
-        header, headerPage,
-        bodyContainer, actionBar,mainContainer,
+    const values = { 
+        loading,
+        setLoading,
+        message,
+        setMessage,
     };
 
     return(
-        <coreContext.Provider value = { value }>
+        <CoreContext.Provider value={values}>
             { children }
-        </coreContext.Provider>
+            { loading ? <Loading /> : null }
+       </CoreContext.Provider>
     );
 };
 

@@ -11,7 +11,7 @@ import 'react-day-picker/lib/style.css';
 import { setDate, setFilterGot, setCommune, setQuartier, setType } from "./handlers/rapport.identifications.handlers";
 import rapportIdentificationsModel from "./models/rapport.identifications.model";
 
-import { URI } from "components/base/auth/access.token";
+import { URI } from "components/motor/api/uri";
 import { AppContext } from "components/motor/context/app.context";
 import { useContext } from "react/cjs/react.development";
 import { communes } from "../../data/communes";

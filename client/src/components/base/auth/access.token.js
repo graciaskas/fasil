@@ -1,7 +1,7 @@
 import { getUserInfo } from "../functions/all";
 
-export const IP_ADDR = window.location.host.replace(":3000",'');
-export const URI = `http://${IP_ADDR}:8020/api/v1/motor`;
+export const IP_ADDR = window.location.host.replace(":3000", '');
+export const BASE_URI = `http://${IP_ADDR}:8020/v1`;
 export const DB_URI = `http://${IP_ADDR}:8020/database`;
 
 /**
@@ -10,7 +10,7 @@ export const DB_URI = `http://${IP_ADDR}:8020/database`;
  */
 export const userInfos = async () => {
     try {
-        const token =  getUserInfo() ?.token;
+        const token =  getUserInfo()?.token;
         const database  = getUserInfo()?.database;
         const request = await fetch(`${DB_URI}/user/?database=${database}`,{
             method : "GET",
@@ -18,7 +18,9 @@ export const userInfos = async () => {
         });
         const data = await request.json();
         return data;
-    } catch (error) { console.error(error); }
+    } catch (error) {
+        console.error(error);
+    }
 }; 
 
 
@@ -42,11 +44,11 @@ const auth = async () => {
             if(!token) return window.location.href = `/database/?selected=${selected_database}&id=${database_id}`;
             //Get user info
             const user = await userInfos();
-            if(user.type == 'danger') { //danger message from server == token
+            if(user.type === 'danger') { //danger message from server == token
                 localStorage.removeItem("userConnectionInfo"); //remove current user infos
             }
         }else { 
-            if( pathname == "/" || pathname === "/database/manager") return
+            if( pathname === "/" || pathname === "/database/manager") return
             return  window.location.href = `/`
         }
     } catch (error) {

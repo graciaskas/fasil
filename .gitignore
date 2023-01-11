@@ -1,5 +1,6 @@
 node_modules
-backend/node_modules
+api/node_modules
 client/node_modules
 .sh
 .dbshell
+.package-json.lock

@@ -6,9 +6,10 @@ import Model from "../models/user.model";
 
 import { AppContext } from "components/motor/context/app.context";
 
-import { URI } from "components/base/auth/access.token";
+import { URI } from "components/motor/api/uri";
 import { useEffect } from "react/cjs/react.development";
 import { parseUrl } from "query-string";
+import axios from "axios";
 
 export const UserContext = React.createContext();
 
@@ -30,10 +31,12 @@ const Provider = ({ children }) => {
    const getUser = async (setter, id) => { 
       try {
          setLoading(true)
-         const response = await fetch(URI+"/users/"+id+"/?database="+database,{ method : "GET", headers: { "Authorization": bearer}});
-         const json = await response.json();
-         setUser(json.data);
-         if( setter ) setter(json.data)
+         const { data } = await axios(URI + "/users/" + id + "/?database=" + database, {
+            method: "GET",
+            headers: { "Authorization": bearer }
+         });
+         setUser(data);
+         if( setter ) setter(data)
          setLoading(false)
       } catch (error) {
          console.error(error);  

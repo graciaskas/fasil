@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import {Link, useHistory} from "react-router-dom";
-import { URI } from "components/base/auth/access.token";
+import { URI } from "components/motor/api/uri";
 import { useContext } from "react/cjs/react.development";
 import { AppContext } from "components/motor/context/app.context";
 
@@ -15,7 +15,7 @@ const VehiculeGrids = ({ data, load, state }) => {
      * @returns 
     */
     const getStolenStatus = type  => { 
-        if(type == true ) return "Volé";
+        if(type === true ) return "Volé";
         return 'Disponible'
     };
 
@@ -25,7 +25,7 @@ const VehiculeGrids = ({ data, load, state }) => {
      * @returns 
     */
     const getStatusColor = type => { 
-        if(type == true ) return 'bg-danger status  text-right';
+        if(type === true ) return 'bg-danger status  text-right';
         return 'bg-warning status  text-right';
     };
 

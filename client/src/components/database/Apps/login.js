@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from "react";
+import React,{ useContext, useEffect, useState } from "react";
 import { parse} from "query-string"
 import { useLocation, useParams, useHistory, Link } from "react-router-dom";
 import { IP_ADDR, DB_URI } from "components/base/auth/access.token";
@@ -12,6 +12,7 @@ import {
 import Message from "components/base/components/Message";
 import axios from "axios";
 import Loading from "components/base/components/Loading";
+import { CoreContext } from "components/base/Context";
 
 export default function Login () {
 
@@ -20,12 +21,7 @@ export default function Login () {
     const [ database, setDatabase ] = useState(null);
     const [ username, setUsername ] = useState(null);
     const [ password, setPassword ] = useState(null);
-    const [ loading, setLoading ] = useState(false);
-
-    const [ logError, setLogError ] = useState({
-        message : null,
-        type : null
-    });
+    const { loading, setLoading, setMessage, message } = useContext(CoreContext);
 
     const {  pathname, search, hash } = useLocation();
     const searchParsed = parse(search);
@@ -53,7 +49,7 @@ export default function Login () {
             const request = await fetch(`${DB_URI}/login/`, options );
             const data = await request.json();
             //-- if user is not found
-            setLogError({ message : data.message, type : 'danger' }); 
+            setMessage({ message : data.message, type : 'danger' }); 
             setLoading(false); //terminate loading effect
             //-- User is found
             if(data.token) { 
@@ -67,13 +63,13 @@ export default function Login () {
             }
         } catch (error) {
            console.error(error);  
-           setLogError({ message : "Internal server error", type : 'danger' });
+           setMessage({ message : "Internal server error", type : 'danger' });
         } 
     };
 
     const requestLogin = (e) => { 
         e.preventDefault();
-        if(!username || !password) return   setLogError({
+        if(!username || !password) return   setMessage({
             message : "Username or password is required.",
             type : 'danger'
         });
@@ -106,8 +102,7 @@ export default function Login () {
                     
                     <form className="form" id="form-login" onSubmit={requestLogin}>
 
-                        <Message  message={logError.message}  type={logError.type} handler={setLogError}/> 
-                            
+                        <Message  message={message.message}  type={message.type} handler={setMessage}/> 
                         <div className="form-e">
                             <span className="icon"> < RiDatabase2Fill />  </span>
                             <input  className="text-center"  disabled  defaultValue={ database }  type="text" name="username"  />

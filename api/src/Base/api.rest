@@ -1,0 +1,2 @@
+GET http://localhost:8020/api/v1/base/countries/?database=odoo&page=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWYzYThlMjRjOGEwMDkwNzM0OTFiMTAiLCJyb2xlIjoic3VwZXJBZG1pbiIsInRpdGxlIjoiQ0VPIiwiaWF0IjoxNjQ0MDA2NDk4LCJleHAiOjE2NDQwMzUyOTh9.bp4NkGZq0aptqE2iwFpk9Huml5qUUUQkdKdnWNG71cE

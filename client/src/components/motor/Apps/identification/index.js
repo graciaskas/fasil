@@ -20,6 +20,8 @@ import CreateOwner from "./views/motor.owner";
 // import demoData from "./data/demo.identifications.js";
 import { IdentificationContext } from "./contexts/indentification.context";
 import { AppContext } from "components/motor/context/app.context";
+import { CoreContext } from "components/base/Context";
+import { URI } from "components/motor/api/uri";
 
 const filters = [ 
     { name: "Noms", value: "names" },
@@ -31,17 +33,18 @@ const filters = [
 
 const Handler = ({ data }) => { 
     //Destructure identification context
-    const { record, stepUrl, setStep,step,setStepUrl } = useContext(IdentificationContext);
+    const { record, stepUrl } = useContext(IdentificationContext);
+    if(!data) return null
     //Verify if record parameter or stepUr is null
     if(record == null || stepUrl == null) { 
-        return  <ViewListGrid data = { data } />
+        return  <ViewListGrid data = { data.data } />
     }
     //Return view for motor
-    if(stepUrl && stepUrl == 'motor') { 
+    if(stepUrl && stepUrl === 'motor') { 
         return <CreateMotor />
     }
     //return view for owner
-    if(stepUrl && stepUrl == 'owner') { 
+    if(stepUrl && stepUrl === 'owner') { 
         return <CreateOwner />
     }
     return null
@@ -52,24 +55,37 @@ const Init = ({ app, name }) =>  {
 
     const history = useHistory();
     const { location } = history;
+    
   
-    const { drivers, setLoadDrivers, loadDrivers, getDrivers } = useContext(AppContext);
+    const { drivers, setDrivers, loadDrivers, getDrivers, database, token } = useContext(AppContext);
+   
 
-    const { createDriver, createOwner,createEngine, printIdentification, stepUrl, setStep, setStepUrl } = useContext(IdentificationContext);
+    const { createDriver, createOwner, createEngine,
+        printIdentification, stepUrl, setStep, } = useContext(IdentificationContext);
+    
+    const apiObject = {
+        url: URI,
+        pathname: "drivers",
+        token,
+        params: {
+            database,
+        }
+    };
 
     useEffect(() => { 
-        setLoadDrivers(true);
-        if(loadDrivers == true) getDrivers();
-    },[loadDrivers]);
+        if (loadDrivers === true) {
+         getDrivers(null, null, null);
+        }
+    },[ loadDrivers ]);
 
     useEffect(() => { 
         if(stepUrl === "motor") setStep(2);
-        if(stepUrl === "owner") setStep(3);
-    },[]);
-    
+        if (stepUrl === "owner") setStep(3);
+        getDrivers(null,null, null);
+    }, []);
+
     return (
         <div className="page" id="page">
-
             <div className="headPage" id="AppHeaderPage">
                 <div className="headPageTitle">
                     <h4>
@@ -91,13 +107,13 @@ const Init = ({ app, name }) =>  {
 
                             <Route path="/motor/identifications" exact>
                                 {   // If step is motor means creating driver's engine
-                                    stepUrl == "motor" ? ( 
+                                    stepUrl === "motor" ? ( 
                                         <button className="bg-blue"  onClick={createEngine}>  Sauvegarder</button> 
                                     ) : null    
                                 }
 
                                 {   // If step is owner means creating an engine's owner
-                                    stepUrl == "owner" ? (
+                                    stepUrl === "owner" ? (
                                         <>
                                             <button  className="bg-blue" onClick={createOwner}>Sauvegarder  </button>
                                             <Link to={"/motor/identifications/"}>
@@ -125,12 +141,23 @@ const Init = ({ app, name }) =>  {
                             </Route>
                         </div>
                     </div>
+                
                     {/**-- Search & Filter Component   **/}
-                    <Route path="/motor/identifications/create" exact>
-                        <Search data={drivers} location={location} filters={[]} searching={false} context={IdentificationContext} />
-                    </Route>
                     <Route path="/motor/identifications" exact>
-                        <Search data= {drivers} location= {location} viewType={"both"} filters={filters} searching={true} context={IdentificationContext} />
+                        {   // Render component when data is available
+                            drivers !== null ? (
+                                <Search
+                                    data={drivers}
+                                    location={location}
+                                    viewType={"both"}
+                                    filters={filters}
+                                    searching={true}
+                                    context={IdentificationContext}
+                                    updateState={setDrivers}
+                                    api={apiObject}
+                                />
+                            ): null
+                        }
                     </Route>
                 </div>
 
@@ -149,6 +176,8 @@ const Init = ({ app, name }) =>  {
             {   /***-- End Application routes   ---**/ }
         </div>
     );
+
+   
 }
 
 export default Init;

@@ -17,10 +17,9 @@
     "react-html-table-to-excel": "^2.0.0",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "5.0.0",
     "react-webcam": "^6.0.0"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -43,6 +42,6 @@
     ]
   },
   "keywords": [],
-  "author": "",
+  "author": "Gracias Kasongo",
   "license": "ISC"
 }

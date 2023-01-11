@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <link rel="stylesheet" href="/css/main.css" type="text/css">
+       <style type="text/css">
+        * ,
+        *:before,
+         *:after{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box !important;
+            font-family: Ubuntu,"Poppins",-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+         }
+         p { 
+            font-size: 8px !important;
+         }
+         strong { 
+            font-size: 7px !important;
+            margin-right: 5px ;
+         }
+         body { 
+             padding: 0px 20px !important;
+             width: 100%;
+             height: 100%;
+         }
+         .header { 
+            border-bottom: 1px solid #000;
+            padding-bottom: 6px;
+            clear: both;
+         }
+         .flex {
+            display: flex !important;
+            display: -webkit-flex !important;
+         }
+         .w-30{
+             width: 30%;
+         }
+         .w-60{
+             width: 60%;
+         }
+
+         .text-center { 
+             text-align: center;
+         }
+         .headTitle{
+            background: #444;
+            color: #fff !important;
+            font-weight: bolder !important;
+            padding: 3px 5px;
+            border-radius: 3px;
+         }
+         
+         .infos { 
+             margin-top: 5px;
+             display: block;
+             width: 100%;
+             clear: left;
+             height: 90px;
+         }
+
+         .image { 
+            float: left;
+            width: 90px;
+            height: 85px;
+            border-radius: 3px;
+            border: 1px solid #efefef;
+            overflow: hidden;
+            padding: 7px;
+         }
+         
+         img { 
+            width: 100%;
+            height: 100%;
+         }
+         .info{ 
+            width: 80%;
+            float: left;
+         }
+
+         .info .info-line { 
+             display: inline-block;
+             width: 100%;
+         }
+         .driver { 
+            height: 100% !important;
+            clear: both;
+         }
+         @media print {
+         *,
+         *:before,
+         *:after {
+            text-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            box-sizing: border-box !important;
+         }
+      }
+    </style>
+    </head>
+    <body>
+        <header class="flex header">
+            <div style="width: 25%; text-align: left;">
+                <img src="data:image/png;base64,<%=logo_mairie%>" style="height: 70px; width:60px"/>
+            </div>
+            <div class="text-center" style="width: 70%;">
+                <h4 style="font-size: 12px !important;">REPUBLIQUE DEMOCRATIQUE DU CONGO</h4>
+                <h4 style="font-size: 12px !important;">PROVINCE DU NORD-KIVU</h4>
+                <h4 style="font-size: 12px !important;">MAIRIE DE GOMA</h4>
+            </div>
+            <div style="width: 25%; text-align: right;">
+               <img src="data:image/png;base64,<%=logo_congo%>" style="height: 60px; width:60px"/>
+            </div>
+        </header>
+        <div  style="padding: 5px 0px;">
+            <h4 style="font-size: 10px !important;">FICHE D'IDENTIFICATION DU CHAROI MOTO</h4>
+            <p><strong>Date:</strong> <%=  new Date().getDate()+"."+new Date().getMonth()+1+"."+new Date().getFullYear()%></p>
+            <p><strong>Copyright&copy; Lambano Group.</strong></p>
+        </div>
+
+        <% if(owner != null ) { %>
+            <section class="driver" style="margin-top: 2px;">
+                <div class="headTitle">
+                    <p>INFORMATION SUR LE <%= owner.isPP == "true" ? "PROPRIETAIRE" : "ENTREPRISE" %></p>
+                </div>
+                <section class="infos">
+                    <div class="image">
+                        <img src="<%=owner.image%>" />
+                    </div>
+                    <div class="info">
+                        <div class="info-line" style="margin-left: 30px;margin-top: 10px;">
+                            <p><strong>NOM:</strong> <%= owner.names.toUpperCase() %>,
+                                <% if(owner.isPP == "false") {%>
+                                    <strong>RCCM :</strong> <%=owner.rccm%>
+                                    <strong>Num Impot :</strong> <%=owner.numImpot%>
+                                    <strong>ID NAT :</strong> <%=owner.idnat%>
+                                <%}%>
+                            </p>
+                            <!-- <p>CARTE ID : <%=driver.address.id_no%></p> -->
+                            <p><strong>ADRESSE:</strong>  
+                                <%=owner.address.province.toUpperCase()%>,  <%=owner.address.commune.toUpperCase()%>/<%=owner.address.quartier.toUpperCase()%>/<%=owner.address.avenue.toUpperCase()%> N° <%=owner.address.no%></p>
+                            <p><strong>PHONE: </strong> <%=owner.phone%></p>
+                            <p><strong>EMAIL: </strong> <%=owner.email%></p>
+                            <p><strong>SITE WEB: </strong> <%=owner.website%></p>
+                       </div>
+                    </div>
+                </section>
+            </section>
+        <% } %>
+
+
+
+        <section class="driver">
+            <div class="headTitle">
+                <%if(driver.type == 2 ) {%> <p>INFORMATION SUR LE CONDUCTEUR (Privé)</p> <%}%>
+                <% if(driver.type ==  1 ){%> <p>INFORMATION SUR LE MOTARD</p> <%}%>
+                <%if(driver.type == 3 ) {%> <p>INFORMATION SUR LE MANDATEUR</p> <%}%>
+            </div>
+            <div class="infos">
+                <div class="image">
+                    <img src="<%=imageExists(driver.image)%>" />
+                </div>
+                <div class="info">
+                   <div class="info-line" style="margin-left: 30px;margin-top: 4px;">
+                        <p><strong>NOM COMPLET :</strong> <%= driver.names.toUpperCase() %></p>
+                        <p><strong>ADRESSE :</strong> <%=driver.address.no%>, Av <%=driver.address.avenue.toUpperCase()%>, <%=driver.address.commune.toUpperCase()%>
+                           /<%=driver.address.quartier.toUpperCase()%></p>
+                        <!-- <p><strong>PERMIS DE CONDUIRE :</strong> <%=driver.id_driver%></p> -->
+                        <p><strong>ID :</strong> <%=driver.address.id_no%></p>
+                        <p><strong>NATIONALITÉ :</strong>  <%= driver.nationality%></p>
+                        <p><strong>LIEU DE NAISSANCE :</strong>  <%= driver.birthTown%></p>
+                        <%if(driver.type === 1 ) {%> 
+                            <p><strong>ASSOCIATION :</strong> <%=driver.affiliation.toUpperCase()%> , <strong>PROPRIETAIRE:</strong> <%=driver.isOwner ? "OUI" : "NON"%></p>    
+                        <%}%>
+                        <p><strong>CONTACTS :</strong> <%=driver.phone%>, <%=driver.email%></p>
+                        <% if(driver.type === 3 ) {%> 
+                            <p><strong>FONCTION :</strong> <%=driver.job%></p>
+                        <% } %> 
+                   </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="driver">
+            <div class="headTitle">
+                <p>INFORMATION SUR L'ENGIN</p>
+            </div>
+            <section class="infos">
+                <div class="image">
+                    <!-- <img src="<%=imageExists(engine.image)%>" /> -->
+                    <img src="<%=gillet.image%>" />
+                </div>
+                <div class="info">
+                    <div class="info-line" style="margin-left: 30px;margin-top: 4px;">
+                        <p><strong>MARQUE :</strong>  <%=engine.marque%></p>
+                        <p><strong>MODEL :</strong>  <%=engine.model%></p>
+                        <p><strong>N° MOTEUR :</strong>  <%=engine.moteur%></p>
+                        <p><strong>N° PLAQUE :</strong>  <%=engine.plaque%></p>
+                        <p><strong>N° CHASSIS :</strong> <%=engine.chassis%></p>
+                        <p><strong>COULEUR :</strong> <%=engine.couleur%></p>
+                        <p><strong>TYPE :</strong> <%=engine.typePneu%> pneu(s)</p>
+                        <p><strong>N° GILLET :</strong>  <%=driver.gillet%></p>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+
+        <section class="" style="clear: both; margin-top: 10px;">
+            <div class="infos">
+                <!-- <div class="image" style="border: none;">
+                    <img src="<%=gillet.image%>" style="width: 60px; height: 60px; margin-top: 15px;"/>
+                </div> -->
+            </div>
+            <div class="info" style="float: right !important;width: 40%;">
+                <p>Fait à Goma le  ........../........../<%= new Date().getFullYear();%></p>
+                <p>Commissaire Supérieur de la commune de <%=driver.address.commune %></p>
+                <p style="margin-top: 10px;">Signature: </p>
+            </div>
+        </section>
+
+    </body>
+</html>

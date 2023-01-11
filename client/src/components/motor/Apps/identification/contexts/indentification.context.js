@@ -11,7 +11,9 @@ import Loading from 'components/base/components/Loading';
 import { getUserInfo } from 'components/base/functions/all';
 import { AppContext } from 'components/motor/context/app.context';
 
-import { URI, userInfos } from 'components/base/auth/access.token';
+import { userInfos } from 'components/base/auth/access.token';
+import { URI } from 'components/motor/api/uri';
+import axios from 'axios';
 
 export const IdentificationContext = React.createContext();
 
@@ -39,23 +41,24 @@ const Provider = ({ children }) => {
 		try {
 			let found = [];
 			if(filter) { 
-				console.log(filter);
 				const filter_ = filter.toString().toLowerCase();	
 				const search = value.toString().toLowerCase();
-				const response = await fetch(`${URI}/drivers/?q=${value}&field=${filter_}&database=${database}`, {  method : "GET", headers: { 
+				const { data } = await axios(`${URI}/drivers/?q=${value}&field=${filter_}&database=${database}`, {
+					method: "GET",
+					headers: { 
 						"Authorization": bearer
 					}
 				});
-				const json = await response.json();				
-				if (search == null || search == '') return getDrivers();
+				console.log(data);
+				if (search == null || search === '') return getDrivers();
 				//return setDrivers(found);
-				return setDrivers(json.data)
+				return setDrivers(data.result)
 			}else {
 
-				if(value !== "" && value != null && value != undefined) { 
+				if(value !== "" && value != null && value !== undefined) { 
 					const search = value.toString().toLowerCase();
 					found = drivers.filter((element) => element.names.includes(search));
-					if (search == null || search == '') return getDrivers();
+					if (search == null || search === '') return getDrivers();
 					return setDrivers(found);
 				} else { 
 					return getDrivers();
@@ -104,8 +107,6 @@ const Provider = ({ children }) => {
 	const createDriver = async () => {
 		try {
 			setLoading(true);
-			const user = await userInfos();
-			modelIdentification.create_uid = user._id;
 			const body = JSON.stringify({ database, modelIdentification,});
 			fetch(URI + '/drivers', { 
 				method: 'POST', 
@@ -222,7 +223,8 @@ const Provider = ({ children }) => {
 		record,
 		stepUrl,
 		handleSearch,
-		printing, setPrinting
+		printing, setPrinting,
+		drivers, setDrivers, getDrivers
 	};
 
 	useEffect(() => {

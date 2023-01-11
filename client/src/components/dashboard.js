@@ -7,10 +7,7 @@ import Store from './base/store.apps';
 import authenticate from "./base/auth/access.token";
 
 export default  function AppSelector({match}) {
-   //authentificate
-   authenticate()
     return (
-
         <div className="shadow">
             <Header currentLink="" name="main"/>
             <div className="container">

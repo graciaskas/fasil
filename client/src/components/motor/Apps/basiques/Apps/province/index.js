@@ -64,7 +64,7 @@ const ViewSelector = ({ data, viewType }) => {
 
                 <Route path="/motor/basiques/provinces" exact>
                     <Search 
-                        data={[]}
+                        data={provinces}
                         searching={true}
                         viewType="both"
                         location={ location }

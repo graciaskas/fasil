@@ -19,9 +19,13 @@ const View = (props) => {
 
    useEffect(()=> { 
       getUser(setUser, id);
-   },[]);
+   }, []);
+   
 
-   const { image, name, username, title, role } = user;
+   if (!user) return;
+
+   const { image, name, username, title, role } = user.data;
+
 
     return (
       <div className="bodyContainer" id="bodyContainer" >

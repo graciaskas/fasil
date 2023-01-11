@@ -47,7 +47,9 @@ const Create = props => {
     const [ fileSelected, setFileSelected ] = useState(imageProprietaire);
     const [ gillets, setGillets ] = useState([]);
 
-    const { typePersonne,setTypePersonne,message,setMessage,associations,setLoadAssociations,setLoadDrivers,getGillets } = useContext(AppContext)
+    const {
+        typePersonne, setTypePersonne, message, setMessage, associations, setLoadAssociations,
+        setLoadDrivers, getGillets } = useContext(AppContext);
 
     const removeFileSelected = () => setFileSelected(null);
 
@@ -80,7 +82,8 @@ const Create = props => {
     //Load Gillets acconding to typePersonne change
     useEffect(() => { 
         getGillets(setGillets, typePersonne); //load gillets according to selected person type
-    },[typePersonne]);
+    }, [ typePersonne ]);
+    
 
 
         
@@ -263,7 +266,7 @@ const Create = props => {
                                                 <div className="label"><p>Autocollant</p></div>
                                                 <div className="input_input">
                                                     <Datalist  
-                                                        data={ gillets }  
+                                                        data={ gillets.data }  
                                                         item={"num"}   
                                                         create={false}  
                                                         className="required" 
@@ -302,13 +305,13 @@ const Create = props => {
                                                         <div className="input">
                                                             <div className="label"><p>Association</p></div>
                                                             <div className="input_input">
-                                                                <Datalist data={associations} item={"name"} create={false} className="required"  onChange={setAssociation} />
+                                                                <Datalist data={associations && associations.data} item={"name"} create={false} className="required"  onChange={setAssociation} />
                                                             </div>
                                                         </div>
                                                         <div className="input">
                                                             <div className="label"><p>Gillet</p></div>
                                                             <div className="input_input">
-                                                                <Datalist  data={gillets}  item={"num"}   create={false}  className="required" onChange={setGillet} url="gillets" type={typePersonne}/>
+                                                                <Datalist  data={ gillets && gillets.data }  item={"num"}   create={false}  className="required" onChange={setGillet} url="gillets" type={typePersonne}/>
                                                             </div>
                                                         </div>
                                                     </div>

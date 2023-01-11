@@ -15,16 +15,18 @@ import UsersList from "./views/users.list.view";
 //**-- Contexts */
 import { UserContext } from "./context/user.context";
 import { AppContext } from "components/motor/context/app.context.js";
+import { URI } from "components/motor/api/uri";
 
 
 
 
-const UsersListGrids = ({ data }) => { 
+const Handler = ({ data }) => { 
 
     const {  search } = useLocation();
-    const { url, query } = parseUrl(search);
+    const {  query } = parseUrl(search);
     const { message, setMessage } = useContext(AppContext);
-    
+
+    if(!data) return null
     let isViewType = query.viewType ? true : false;
     let viewType = 'grid';
 
@@ -34,13 +36,13 @@ const UsersListGrids = ({ data }) => {
     if(viewType === "list") return (
         <>
             <Message message={message.message} type={message.type} handler={setMessage}/>
-            <UsersList data={ data } /> 
+            <UsersList data={ data.data } /> 
         </>
     ) 
     else return(
         <>
             <Message message={message.message} type={message.type} handler={setMessage}/>
-            <UserGrids data= { data } />
+            <UserGrids data= { data.data } />
         </>
     )
 }
@@ -123,8 +125,18 @@ const UserGrids = ({ data }) => {
     const id = query.q ? query.q : null; //Get the current ID
 
     //**-- MainApp context values */
-    const { utilisateurs, setLoadUtilisateurs } = useContext(AppContext);
-    const {  createUser, updateUser, deleteUser, archiveUser ,handleSearch } = useContext(UserContext);
+    const { utilisateurs, setLoadUtilisateurs,setUtilisateurs,database, token } = useContext(AppContext);
+    const { createUser, updateUser, deleteUser, archiveUser, handleSearch } = useContext(UserContext);
+     
+
+    const apiObject = {
+        url: URI,
+        pathname: "users",
+        token,
+        params: {
+            database
+        }
+    };
 
     useEffect(() => { 
         setLoadUtilisateurs(true);
@@ -194,13 +206,27 @@ const UserGrids = ({ data }) => {
 
                 {/* Search bar */}
                 <Route path="/motor/parametres/utilisateurs" exact>
-                    <Search data={[]} searching={true} viewType="both" location={ location } context={ UserContext }filters = { []} />
+                    {
+                        //Verify if data is available
+                        utilisateurs != null ? (
+                            <Search
+                                data={utilisateurs}
+                                searching={true}
+                                viewType="both"
+                                location={location}
+                                context={UserContext}
+                                filters={[]}
+                                updateState={setUtilisateurs}
+                                api={apiObject}
+                            />
+                        ) : null
+                    }
                 </Route>
             </div>
             {/* End header page */}
 
             <Route path="/motor/parametres/utilisateurs" exact>
-                <UsersListGrids data={ utilisateurs} />
+                <Handler data={ utilisateurs} />
             </Route>
 
             <Route path="/motor/parametres/utilisateurs/view" exact>

@@ -24,7 +24,7 @@ import { quartiers }  from "../../data/quartiers";
 import Handler from "../handlers/owner.handler";
 import { useHistory } from "react-router-dom";
 import { parseUrl } from "query-string";
-import { URI } from "components/base/auth/access.token";
+import { URI } from "components/motor/api/uri";
 import { getUserInfo } from "components/base/functions/all";
 import modelOwner from "../models/model.owner";
 

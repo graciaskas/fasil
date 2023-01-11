@@ -1,5 +1,5 @@
 import React, { useContext, useCooperativeContext, useEffect, useState} from "react";
-import { URI } from "components/base/auth/access.token";
+import { URI } from "components/motor/api/uri";
 import modelCooperative from "../models/model.cooperative";
 import axios from "axios";
 

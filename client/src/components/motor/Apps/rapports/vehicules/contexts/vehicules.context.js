@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "components/motor/context/app.context";
-import { URI } from "components/base/auth/access.token";
+import { URI } from "components/motor/api/uri";
 import { useState } from "react/cjs/react.development";
 
 export const VehiculeContext = React.createContext();

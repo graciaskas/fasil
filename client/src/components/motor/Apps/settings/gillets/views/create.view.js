@@ -74,7 +74,7 @@ function Create({ create }) {
                                                 <div className="input">
                                                     <div className="label"><p>Association</p></div>
                                                     <div className="input_input">
-                                                    <Datalist  data={associations}  item={"name"}   onChange={setAssociation}  className="required" />
+                                                    <Datalist  data={associations && associations.data}  item={"name"}   onChange={setAssociation}  className="required" />
                                                     </div>
                                                 </div>
                                             ):null

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;500;700&display=swap" rel="stylesheet"> -->
+       <style type="text/css">
+         th {
+             font-weight: 500 !important;
+         }
+         * ,*:before,
+            *:after{
+               padding: 0px;
+               margin: 0px;
+               box-sizing: border-box !important;
+
+               font-family: "Poppins",-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+            p, td { 
+               font-size: 8px !important;
+               /* font-weight: 400 !important; */
+            }
+            strong { 
+               font-size: 7px !important;
+               margin-right: 5px ;
+            }
+            body { 
+               padding: 5px 20px !important;
+               width: 100%;
+               height: 100%;
+            }
+            .header { 
+               border-bottom: 1px solid #000;
+               padding-bottom: 6px;
+               clear: both;
+            }
+            .flex {
+               display: flex !important;
+               display: -webkit-flex !important;
+            }
+            .w-30{
+               width: 30%;
+            }
+            .w-60{
+               width: 60%;
+            }
+
+            .text-center { 
+               text-align: center;
+            }
+            
+            
+            @media print {
+            *,
+            *:before,
+            *:after {
+               text-shadow: none !important;
+               -webkit-box-shadow: none !important;
+               box-shadow: none !important;
+               box-sizing: border-box !important;
+            }
+
+            table { 
+               width: 100%;
+               border-collapse: collapse;
+            }
+            
+            table thead tr th {
+               font-size: 9px;
+               font-weight: 500;
+               text-align: left;
+               padding: 2px 0px !important;
+               border-bottom: 1px solid #000 !important;
+            }
+            table tbody tr{
+               border-bottom: 1px solid #ececec;
+            }
+            table td {
+               text-align: start;
+               padding: 2px 0px !important;
+               vertical-align: auto;
+            }
+            span { 
+               font-size: 18px !important;
+            }
+         }
+       </style>
+   </head>
+   <body>
+      <header class="flex header">
+         <div style="width: 25%; text-align: left;">
+             <img src="data:image/png;base64,<%=logo_mairie%>" style="height: 70px; width:60px"/>
+         </div>
+         <div class="text-center" style="width: 70%;">
+             <h4 style="font-size: 11px !important;">REPUBLIQUE DEMOCRATIQUE DU CONGO</h4>
+             <h4 style="font-size: 11px !important;">PROVINCE DU NORD-KIVU</h4>
+             <h4 style="font-size: 11px !important;">MAIRIE DE GOMA</h4>
+         </div>
+         <div style="width: 25%; text-align: right;">
+            <img src="data:image/png;base64,<%=logo_congo%>" style="height: 60px; width:60px"/>
+         </div>
+      </header>
+      <div  style="padding: 5px 0px;">
+         <h4 style="font-size: 10px !important;">
+            LISTE DES IDENTIFICATIONS 
+            <% if(type == 1) {%> MOTARDS <%}%>
+            <% if(type == 2) {%> CONDUCTEURS PRIVES  <%}%>
+            <% if(type == 3) {%> VEHICULES SOCIETE <%}%>
+         </h4>
+        
+         <p><strong>DATE :</strong> <%=  new Date().getDate()+"."+new Date().getMonth()+1+"."+new Date().getFullYear()%></p>
+         <p><strong><%= commune ? "COMMUNE :  "+commune : "" %></strong></p>
+         <p><strong><%= quartier ? "QUARTIER : "+quartier : "" %></strong></p>
+         <!-- <p><strong>Copyright&copy; Lambano Group.</strong></p> -->
+      </div>
+
+      <table style="margin-top: 5px;">
+         <thead>
+            <tr>
+               <th><strong>#</strong></th>
+               <th><strong>Noms</strong></th>
+               <th><strong>Téléphone</strong></th>
+               <th><strong>Organisation</strong></th>
+               <th><strong>Gillet</strong></th>
+               <th><strong>Type</strong></th>
+               <th style="text-align: right;"><strong>Commune</strong></th>
+            </tr>
+         </thead>
+         <tbody>
+            <% for( let i = 0; i < drivers.length; i++) { %>
+               <tr>
+                  <td><%= i+1 %></td>
+                  <td style="font-weight: 400 !important;"><%= drivers[i].names %></td>
+                  <td><%= drivers[i].phone %></td>
+                  <td><%= drivers[i].affiliation %></td>
+                  <td><%= drivers[i].gillet %></td>
+                  <% if(drivers[i].type == 1) {%> <td>Taximan</td> <%}%>
+                  <% if(drivers[i].type == 2) {%> <td>Privé</td> <%}%>
+                  <% if(drivers[i].type == 3) {%> <td>M.Sté</td> <%}%>
+                  <td style="text-align: right;"><%= drivers[i].address.commune %></td>
+               </tr>
+            <% } %>
+         </tbody>
+      </table>
+   </body>
+</html>

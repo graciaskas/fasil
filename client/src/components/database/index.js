@@ -1,99 +1,18 @@
-import React,{useEffect, useState}  from "react";
-import { useHistory, Link, useLocation, Route } from "react-router-dom";
-import axios from "axios";
-import { DB_URI } from "components/base/auth/access.token";
-import { getUserInfo } from 'components/base/functions/all';
-
-import CreateDB from "./modals/create_db";
-import Message from "components/base/components/Message";
-import Loading from "components/base/components/Loading";
-import Controller from "./controller";
+import React from 'react';
+import { Route } from 'react-router-dom';
+import Manager from './Apps/manager';
+import Select from "./Apps/Select";
+import Login from './Apps/login';
+import Create from './modals/create';
 
 
-
-export const DabaseList = ( { databases }) => { 
-    return(
-        <div className="" id="db-list">
-            {
-                databases.length ? databases.map( (database,key) => (
-                    <div className="db-item" key={key}>
-                        <Link to={`/database/login/?selected=${database.name}&id=${key}`}>
-                            {database.name}
-                        </Link>
-                    </div>
-                )): null
-            }
-        </div>
-    );
-};
-
-
- const DatabaseSelect = () =>  {
-    "use strict";
-
-    const [ data, setData ] = useState([]);
-    const [display,setDisplay] = useState('none');
-    const { pathname } = useLocation();
-    const database = JSON.parse(window.localStorage.getItem("database"));
-    const history = useHistory();
-    const [ loading, setLoading ] = useState(false);
-
-    const [ logError, setLogError ] = useState({
-        message : null,
-        type : null
-    });
-
-    const getData = async () => { 
-        setLoading(true)
-        try {
-            const { data } = await axios.get(`${DB_URI}/list`);
-            setData(data);
-            if(!data.length) setDisplay("block");
-            setLoading(false)
-        } catch (error) {
-            setLogError({ 
-                message : error.message,
-                type : "danger"
-            });
-        }
-    }
-
-
-    useEffect( () => { 
-       //Any selected db saved in localStorage
-        if(database != null ){
-            if(database.name)  { 
-                history.push(`./database/login/?selected=${database.name}&id=${database.id}`); 
-            }
-        } else { 
-            getData();  
-        }//fetch databases   
-
-    },[]);
-
-  
-
-    return(
-        <> {}
-            <div className="login-container">
-                <div className="s-main">
-                    <div className="s-container">
-                        <div className="head"><h4>Database selection</h4>  </div>
-                        { /****  Components ***/ }
-                        {loading ? <Loading /> : null}
-                        <Message message={logError.message} type={logError.type} handler={setLogError} absolute={ false }/> 
-                        {
-                            data.length != 0 ? 
-                                <DabaseList databases={data} /> : <CreateDB display={data.length == 0 ? "block" : "none"} />
-                        }
-                        
-                        
-                        
-                    </div>
-                </div>
-            </div>
-        </>
+export default function Init(props) {
+    return (
+        <React.Fragment>
+            <Route path={"/database/manager"} exact component={Manager} />
+            <Route path={"/database/login"} exact component={Login} />
+            <Route path={"/database/create"} exact component={Create} />
+            <Route path={"/"} exact component={Select }/>
+        </React.Fragment>
     )
 };
-
-export default DatabaseSelect;

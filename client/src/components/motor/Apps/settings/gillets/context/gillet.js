@@ -5,7 +5,7 @@ import { resetModel } from "components/base/functions/resetModel";
 
 import Model from "../models/gillet";
 
-import { URI } from "components/base/auth/access.token";
+import { URI } from "components/motor/api/uri";
 import { AppContext } from "components/motor/context/app.context";
 
 
@@ -42,25 +42,30 @@ const Provider = ({ children }) => {
 	};
 
    const createGillet = async () => {
-      setLoading(true) 
-      fetch(URI+"/gillets",{ method:"POST", headers:{
-         "Content-Type":"application/json",
-         "Authorization":"Bearer "+token
-         },
-         body: JSON.stringify({ Model,database })
-      })
-      .then( res => { 
-         setLoading(false)
-         return res.json();
-      }).then( data => {
-         setMessage({ message : data.message, type : data.type });
-         if(data.data)  { 
-            setGillets(data.data);
-            resetModel(Model);
-            setTimeout(() => history.push("/motor/parametres/gillets")   , 200)
-         }
-      })
-     .catch(e => console.log(e))
+      try {
+         setLoading(true); 
+         fetch(URI + "/gillets", {
+            method: "POST", headers: {
+               "Content-Type": "application/json",
+               "Authorization": "Bearer " + token
+            },
+            body: JSON.stringify({ Model, database })
+         })
+            .then(res => {
+               setLoading(false)
+               return res.json();
+            }).then(data => {
+               setMessage({ message: data.message, type: data.type });
+               if (data.data) {
+                  setGillets(data);
+                  resetModel(Model);
+                  setTimeout(() => history.push("/motor/parametres/gillets"), 200)
+               }
+            })
+            .catch(e => console.log(e));
+      } catch (error) {
+         setMessage({ message: error.message, type: 'danger' });
+      }
    };
 
 

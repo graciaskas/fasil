@@ -5,14 +5,13 @@ import { useLocation } from "react-router";
 import IdentificationList from "./identifications.list";
 import Grids from  "./identifications.grid";
 import { parseUrl } from "query-string";
-import { IdentificationContext } from "../contexts/indentification.context";
 import Message from "components/base/components/Message";
 import { AppContext } from "components/motor/context/app.context";
 
 const IdentificationMain = ({ data }) => { 
-
+    
     const {  search } = useLocation();
-    const { url, query } = parseUrl(search);
+    const { query } = parseUrl(search);
     const { message, setMessage } = useContext(AppContext);
     
     let isViewType = query.viewType ? true : false;
@@ -29,8 +28,9 @@ const IdentificationMain = ({ data }) => {
                 <IdentificationList data={ data } /> 
             </div>
         </div>
-    ) 
-    else return(
+    )
+    
+    return(
         <div className="bodyContainer" id="bodyContainer">
             <div id="action_bar" style={{display:"none"}}></div>
             <div className="main-container bg-gray">

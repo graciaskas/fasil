@@ -21,6 +21,7 @@ import { getApp } from "components/base/functions/all";
 const Controller = ({ match }) => { 
     //Store current application
     const Application = getApp(match.url);
+    console.log(Application);
     //**--- Switch application and return corresponding application
         switch (Application) {
             case "dashboard":  

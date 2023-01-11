@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { FaBiking } from "react-icons/fa"
 
 const Identification = ({ data, size }) => {
 
@@ -16,14 +15,14 @@ const Identification = ({ data, size }) => {
     };
 
     const getCompany = type  => { 
-        if(type == 2 ) return "Privé";
-        if(type == 3 ) return "Entreprise";
+        if(type === 2 ) return "Privé";
+        if(type === 3 ) return "Entreprise";
         return affiliation;
     };
 
     const getCompanyColor = type => { 
-        if(type == 2 ) return 'bg-success status  text-right';
-        if(type == 3) return 'bg-primary status  text-right';
+        if(type === 2 ) return 'bg-success status  text-right';
+        if(type === 3) return 'bg-primary status  text-right';
         return 'bg-secondary status  text-right'
     };
 

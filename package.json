@@ -1,24 +1,22 @@
 {
-  "name": "zeslap",
+  "name": "ZeSlap",
   "version": "1.0.0",
-  "description": "ZeSlap ERP",
-  "main": "index.js",
+  "description": "ZeSlap is an ERP system based on MERN Stack technology",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "npm start --prefix client",
-    "server": "npm start --prefix backend"
+    "start": "concurrently \"npm start --prefix client\" \"npm start --prefix api\"",
+    "dev": "concurrently \"npm start --prefix client\" \"npm run dev --prefix api\"",
+    "release":"cd client && npm run build && cd ../ && serve -s ./client/build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/graciaskas/myProject.git"
+    "url": "git+https://github.com/graciaskas/zeslap.git"
   },
   "author": "Kas gracias Tmb",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/graciaskas/myProject/issues"
+    "url": "https://github.com/graciaskas/zeslap/issues"
   },
-  "homepage": "https://github.com/graciaskas/myProject#readme",
+  "homepage": "https://github.com/graciaskas/zeslap#readme",
   "dependencies": {
     "concurrently": "^5.2.0"
   }
