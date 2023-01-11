@@ -11,7 +11,7 @@ const Datalist = (props) => {
 
     const click = value => { 
         try {
-            datalistInput.current.value = value
+            datalistInput.current.value = value;
             onChange(value);
             datalist.current.style.display = "none"; 
         } catch (error) {

@@ -4,3 +4,4 @@ client/node_modules
 .sh
 .dbshell
 .package-json.lock
+client/build

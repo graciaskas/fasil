@@ -10,7 +10,7 @@ export default function Displayers (props){
     const { data, viewType, api, updateState, context } = props;
     const { setLoading } = useContext(CoreContext);
 
-    console.log(data);
+
     
     // Return when data is null value;
     if (!data.pagination) return null 

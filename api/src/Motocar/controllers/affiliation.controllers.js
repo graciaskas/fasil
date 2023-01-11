@@ -3,12 +3,30 @@ const { affiliationSchema } = require("../models/affiliation.auth.model");
 const { paginate, QueryOrder }  = require("../../Base/utils/core");
 
 exports.createAffiliation = async (req, res) => {
-  const { modelCooperative } = req.body;
+  let { modelCooperative } = req.body;
 
   if (!modelCooperative)
     return res.json({ message: 'Request body is undefined', type: 'danger' });
   
   const { name, province, ville } = modelCooperative;
+
+  //If user don't send a correct model with adress
+  //We recreat it;
+  if (!modelCooperative.address.province) {
+    modelCooperative = {
+      ...modelCooperative,
+        address: { 
+          province: "-",
+          ville : "-",
+          commune : "-",
+          quartier : "-",
+          avenue : "-",
+          num: "-"
+      },
+    }
+  }
+
+
   try {
    
     const validate = await affiliationSchema.validateAsync(modelCooperative);

@@ -6,7 +6,7 @@ exports.affiliationSchema = Joi.object({
    contact : Joi.number().allow("",null),
    president : Joi.string().allow("",null),
    motards: Joi.number().allow("",null),
-   address : { 
+    address : { 
        province : Joi.string().required(),
        ville : Joi.string().required(),
        commune : Joi.string().required(),
