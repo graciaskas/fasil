@@ -12,13 +12,13 @@ import {
     setPlaque,
     setTypePneu } from "../handlers/motor.handler";
 
-import Datalist from 'components/base/components/Datalist';
-import Message from 'components/base/components/Message';
-import Select from 'components/base/components/Select';
+import Datalist from 'components/Datalist';
+import Message from 'components/Message';
+import Select from 'components/Select';
 
-import { AppContext } from 'components/motor/context/app.context';
+import { AppContext } from 'apps/motor/context/app.context';
 import { colors } from '../../data/colors';
-import { getBas64 } from 'components/base/functions/all';
+import { getBas64 } from 'base/functions/all';
 import { setImage } from '../handlers/motor.handler';
 
 function MotoCreate(props) {

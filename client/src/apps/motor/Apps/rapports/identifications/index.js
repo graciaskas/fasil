@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link, Route } from "react-router-dom";
 
-import Message from "components/base/components/Message";
-import Select from "components/base/components/Select";
-import LoadingDark from "components/base/components/LoadingDark";
-import Datalist from "components/base/components/Datalist";
+import Message from "components/Message";
+import Select from "components/Select";
+import LoadingDark from "components/LoadingDark";
+import Datalist from "components/Datalist";
 import Datepicker from "react-day-picker"
 import 'react-day-picker/lib/style.css';
 // import handlers
 import { setDate, setFilterGot, setCommune, setQuartier, setType } from "./handlers/rapport.identifications.handlers";
 import rapportIdentificationsModel from "./models/rapport.identifications.model";
 
-import { URI } from "components/motor/api/uri";
-import { AppContext } from "components/motor/context/app.context";
+import { URI } from "apps/motor/api/uri";
+import { AppContext } from "apps/motor/context/app.context";
 import { useContext } from "react/cjs/react.development";
 import { communes } from "../../data/communes";
 import { quartiers } from "../../data/quartiers";

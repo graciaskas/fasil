@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { FaUpload, FaTrash } from 'react-icons/fa';
-import { getBas64 } from 'components/base/functions/all';
+import { getBas64 } from 'base/functions/all';
 
 import { setName, setUsername, setRole ,setPassword,setEmail,setTitle, setImage,setActive } from '../handlers/create.handler';
-import Message from 'components/base/components/Message';
-import Select from 'components/base/components/Select';
+import Message from 'components/Message';
+import Select from 'components/Select';
 
-import { AppContext } from 'components/motor/context/app.context';
+import { AppContext } from 'apps/motor/context/app.context';
 
 const access = [{ name: "Utilisateur", value: "user"},{ name: "Administrateur", value:"admin"}];
 const actif = [{ name: "Oui", value: true },{ name: "Non", value: false }];

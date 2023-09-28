@@ -3,9 +3,9 @@ import { Link, Route } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 
 //**--- Components */
-import Loading from "components/base/components/Loading";
-import Explainer from "components/base/components/Explainer"
-import Search from "components/base/components/Search"
+import Loading from "components/Loading";
+import Explainer from "components/Explainer"
+import Search from "components/Search"
 
 //**--- Controller */
 import Controller from "./controller";

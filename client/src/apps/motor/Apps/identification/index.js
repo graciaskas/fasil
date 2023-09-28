@@ -5,8 +5,8 @@ import { parseUrl } from "query-string";
 
 //**--- Components */
 
-import Explainer from "components/base/components/Explainer";
-import Search from "components/base/components/Search";
+import Explainer from "components/Explainer";
+import Search from "components/Search";
 
 //**-- App components */
 import View from "./views/identification.view";
@@ -19,9 +19,9 @@ import CreateOwner from "./views/motor.owner";
 //**-- Data */
 // import demoData from "./data/demo.identifications.js";
 import { IdentificationContext } from "./contexts/indentification.context";
-import { AppContext } from "components/motor/context/app.context";
-import { CoreContext } from "components/base/Context";
-import { URI } from "components/motor/api/uri";
+import { AppContext } from "apps/motor/context/app.context";
+import { CoreContext } from "base/Context";
+import { URI } from "apps/motor/api/uri";
 
 const filters = [ 
     { name: "Noms", value: "names" },

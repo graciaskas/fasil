@@ -1,23 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react';
 //Datas
-import { provinces } from "components/motor/Apps/data/provinces";
-import { communes } from 'components/motor/Apps/data/communes';
-import { villes } from 'components/motor/Apps/data/villes';
-import { colors } from 'components/motor/Apps/data/colors';
+import { provinces } from "apps/motor/Apps/data/provinces";
+import { communes } from 'apps/motor/Apps/data/communes';
+import { villes } from 'apps/motor/Apps/data/villes';
+import { colors } from 'apps/motor/Apps/data/colors';
 
-import { getUserInfo } from 'components/base/functions/all';
-import { URI } from 'components/base/auth/access.token';
+import { getUserInfo } from 'base/functions/all';
+import { URI } from 'base/auth/access.token';
 
-import Select from 'components/base/components/Select';
-import Datalist from "components/base/components/Datalist";
-import Message from 'components/base/components/Message';
+import Select from 'components/Select';
+import Datalist from "components/Datalist";
+import Message from 'components/Message';
 
 //Handlers
 import { setCommune, setNum, setProvince, setColor, setAssociation, setVille, setType } from '../handlers/create.handler';
-import { typePersonnes } from 'components/motor/Apps/identification/data';
+import { typePersonnes } from 'apps/motor/Apps/identification/data';
 
 
-import { AppContext } from 'components/motor/context/app.context';
+import { AppContext } from 'apps/motor/context/app.context';
 
 function Create({ create }) {
 

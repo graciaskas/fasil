@@ -2,7 +2,7 @@ import React from "react";
 
 import Dashboard from ".";
 
-import { getApp } from "components/base/functions/all";
+import { getApp } from "base/functions/all";
 /**
  *Application Controller function
  * @param {*} param0 

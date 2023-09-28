@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 
 import {  FaAlignJustify, FaTh, FaChevronLeft, FaChevronRight,FaFilter } from "react-icons/fa";
 import axios from "axios";
-import { CoreContext } from "../Context";
+import { CoreContext } from "base/Context";
 
 export default function Displayers (props){
 

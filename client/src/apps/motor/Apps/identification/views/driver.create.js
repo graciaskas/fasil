@@ -3,16 +3,16 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import Datepicker from "react-day-picker/DayPickerInput"
 import 'react-day-picker/lib/style.css';
 
-import LoadView from "components/base/functions/loadView";
+import LoadView from "base/functions/loadView";
 import { FaUpload , FaTrash } from "react-icons/fa";
-import imageProprietaire from "components/base/icons/image.png";
+import imageProprietaire from "base/icons/image.png";
 
 //**--- Components */
-import Datalist from "components/base/components/Datalist";
-import Select from "components/base/components/Select";
-import Message from "components/base/components/Message";
+import Datalist from "components/Datalist";
+import Select from "components/Select";
+import Message from "components/Message";
 import Camera from "../modals/camera";
-import { AppContext } from "components/motor/context/app.context";
+import { AppContext } from "apps/motor/context/app.context";
 
 import { quartiers }  from "../../data/quartiers";
 import { communes, genders, nationalities } from "../../data/base";
@@ -21,9 +21,9 @@ import { villes } from "../../data/villes";
 import Handler from "../handlers/driver.handler";
 import Model from "../models/model.driver";
 
-import { getUserInfo } from "components/base/functions/all";
+import { getUserInfo } from "base/functions/all";
 import { typePersonnes } from "../data";
-import { getBas64 } from "components/base/functions/all";
+import { getBas64 } from "base/functions/all";
 
 
 const { setQuartier, setCommune, setType, setAvenue, setProprietaire, setNationalite, 

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react"
 import {Link, useHistory} from "react-router-dom";
-import { URI } from "components/motor/api/uri";
+import { URI } from "apps/motor/api/uri";
 import { useContext } from "react/cjs/react.development";
-import { AppContext } from "components/motor/context/app.context";
+import { AppContext } from "apps/motor/context/app.context";
 
 const VehiculeGrids = ({ data, load, state }) => {
     //Destructure App context object

@@ -4,9 +4,9 @@ import { useHistory } from "react-router";
 
 import Model from "../models/user.model";
 
-import { AppContext } from "components/motor/context/app.context";
+import { AppContext } from "apps/motor/context/app.context";
 
-import { URI } from "components/motor/api/uri";
+import { URI } from "apps/motor/api/uri";
 import { useEffect } from "react/cjs/react.development";
 import { parseUrl } from "query-string";
 import axios from "axios";

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from "react";
-import LoadView from "components/base/functions/loadView";
+import LoadView from "base/functions/loadView";
 
 //**--- Components */
-import Datalist from "components/base/components/Datalist";
-import Message from "components/base/components/Message";
-import Select from "components/base/components/Select";
+import Datalist from "components/Datalist";
+import Message from "components/Message";
+import Select from "components/Select";
 
 import { CooperativeContext } from "../contexts";
 
@@ -12,9 +12,9 @@ import DefaultColumns from "../data/index";
 import { defColgroup } from "../data/index";
 
 import { president, province, ville, quartier, commune, contact,email,setNum,name } from "../handlers/handler.cooperative";
-import { provinces } from "components/motor/Apps/data/provinces";
+import { provinces } from "apps/motor/Apps/data/provinces";
 import { villes } from "../../data/villes";
-import { AppContext } from "components/motor/context/app.context";
+import { AppContext } from "apps/motor/context/app.context";
 import { communes } from "../../data/communes";
 import { quartiers } from "../../data/quartiers";
 import { FaTrash, FaUpload } from "react-icons/fa";

@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 
-import LoadView from "components/base/functions/loadView";
+import LoadView from "base/functions/loadView";
 import { useHistory } from 'react-router';
 import { parseUrl } from 'query-string';
-import Message from 'components/base/components/Message';
+import Message from 'components/Message';
 import { IdentificationContext } from '../contexts/indentification.context';
-import { URI } from 'components/motor/api/uri';
-import { getUserInfo } from 'components/base/functions/all';
-import LoadingDark from 'components/base/components/LoadingDark';
+import { URI } from 'apps/motor/api/uri';
+import { getUserInfo } from 'base/functions/all';
+import LoadingDark from 'components/LoadingDark';
 
 const finger = "/src/finger.JPG";
 

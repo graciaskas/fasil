@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import Message from "components/base/components/Message";
-import LoadView from "components/base/functions/loadView";
-import { AppContext } from "components/motor/context/app.context";
-import { getUserInfo } from "components/base/functions/all";
-import { URI } from "components/motor/api/uri";
+import Message from "components/Message";
+import LoadView from "base/functions/loadView";
+import { AppContext } from "apps/motor/context/app.context";
+import { getUserInfo } from "base/functions/all";
+import { URI } from "apps/motor/api/uri";
 
 
 const View = ({id }) => {

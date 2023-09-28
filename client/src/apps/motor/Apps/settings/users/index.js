@@ -4,18 +4,18 @@ import { parseUrl } from "query-string";
 import { FaCogs } from "react-icons/fa"
 
 
-import Search from "components/base/components/Search";
-import Table from "components/base/components/Table";
+import Search from "components/Search";
+import Table from "components/Table";
 import Create from "./views/user.create.view";
-import Message from "components/base/components/Message";
+import Message from "components/Message";
 import UserView from "./views/user.view.view";
 import UpdateView from "./views/user.update.view";
 import UsersList from "./views/users.list.view";
 
 //**-- Contexts */
 import { UserContext } from "./context/user.context";
-import { AppContext } from "components/motor/context/app.context.js";
-import { URI } from "components/motor/api/uri";
+import { AppContext } from "apps/motor/context/app.context";
+import { URI } from "apps/motor/api/uri";
 
 
 

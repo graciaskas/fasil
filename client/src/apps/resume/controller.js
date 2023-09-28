@@ -2,7 +2,7 @@ import React from "react";
 
 
 
-import { getApp } from "components/base/functions/all";
+import { getApp } from "base/functions/all";
 
 /**
  *Application Controller function

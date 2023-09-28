@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { getBas64 } from 'components/base/functions/all';
+import { getBas64 } from 'base/functions/all';
 import { RiCloseFill } from 'react-icons/ri';
 import modelDriver from '../models/model.driver';
 import modelOwner from '../models/model.owner';

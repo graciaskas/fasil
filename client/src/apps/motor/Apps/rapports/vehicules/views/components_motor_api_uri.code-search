@@ -1,0 +1,52 @@
+# Query: components/motor/api/uri
+# Flags: WordMatch
+# ContextLines: 1
+
+9 results - 9 files
+
+client\src\apps\motor\Apps\identification\index.js:
+  23  import { CoreContext } from "components/base/Context";
+  24: import { URI } from "apps/motor/api/uri";
+  25  
+
+client\src\apps\motor\Apps\identification\contexts\indentification.context.js:
+  14  import { userInfos } from 'components/base/auth/access.token';
+  15: import { URI } from 'apps/motor/api/uri';
+  16  import axios from 'axios';
+
+client\src\apps\motor\Apps\identification\views\identification.view.js:
+  8  import { IdentificationContext } from '../contexts/indentification.context';
+  9: import { URI } from 'apps/motor/api/uri';
+  10  import { getUserInfo } from 'components/base/functions/all';
+
+client\src\apps\motor\Apps\identification\views\motor.owner.js:
+  26  import { parseUrl } from "query-string";
+  27: import { URI } from "apps/motor/api/uri";
+  28  import { getUserInfo } from "components/base/functions/all";
+
+client\src\apps\motor\Apps\rapports\vehicules\views\vehicules.grid.view.js:
+  1  import {Link, useHistory} from "react-router-dom";
+  2  import {Link, useHistory} from "react-router-dom";
+  3: import { URI } from "apps/motor/api/uri";
+  3  import { useContext } from "react/cjs/react.development";
+  4  import { useContext } from "react/cjs/react.development";
+
+client\src\apps\motor\Apps\settings\gillets\index.js:
+  17  
+  18: import { URI } from "apps/motor/api/uri";
+  19  //**-- application data */
+
+client\src\apps\motor\Apps\settings\gillets\context\gillet.js:
+  7  
+  8: import { URI } from "apps/motor/api/uri";
+  9  import { AppContext } from "components/motor/context/app.context";
+
+client\src\apps\motor\Apps\settings\users\index.js:
+  17  import { AppContext } from "components/motor/context/app.context.js";
+  18: import { URI } from "apps/motor/api/uri";
+  19  
+
+client\src\apps\motor\Apps\settings\users\context\user.context.js:
+  8  
+  9: import { URI } from "apps/motor/api/uri";
+  10  import { useEffect } from "react/cjs/react.development";

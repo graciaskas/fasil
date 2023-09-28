@@ -1,5 +1,5 @@
 import React from "react";
-import Table from "components/base/components/Table";
+import Table from "components/Table";
 
 const ProvincesList = ({ columns, data }) => { 
    const rows = data.length ? [...data] : [];

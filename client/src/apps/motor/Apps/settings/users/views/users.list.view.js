@@ -1,5 +1,5 @@
 import React from "react";
-import Table from "components/base/components/Table";
+import Table from "components/Table";
 
 const Columns = ["id","Noms","login","email","Accèss","Dernière connexion","status"];
 

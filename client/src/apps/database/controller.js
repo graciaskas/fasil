@@ -1,4 +1,4 @@
-import { getApp } from "components/base/functions/all";
+import { getApp } from "base/functions/all";
 import React from "react";
 
 export default function Controller({ match }){

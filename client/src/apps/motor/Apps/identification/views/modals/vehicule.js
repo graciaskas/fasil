@@ -3,9 +3,9 @@ import React, { Component, useContext, useEffect, useRef, useState } from "react
 import Datepicker from "react-day-picker/DayPickerInput"
 import 'react-day-picker/lib/style.css';
 
-import LoadView from "components/base/functions/loadView";
+import LoadView from "base/functions/loadView";
 import { FaUpload , FaTrash, FaAddressCard } from "react-icons/fa";
-import imageProprietaire from "components/base/icons/image.png";
+import imageProprietaire from "base/icons/image.png";
 
 //**--- Components */
 import Table from "components/base/Table";
@@ -29,7 +29,7 @@ import {
 
 //import contexts
 import { Context } from "../contexts/Context";
-import { coreContext } from 'components/base/Context';
+import { coreContext } from 'base/Context';
 
 
 

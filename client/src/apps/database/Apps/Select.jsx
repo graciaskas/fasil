@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
-import { DB_URI } from "components/base/auth/access.token";
+import { DB_URI } from "base/auth/access.token";
 
 
-import Message from "components/base/components/Message";
-import { CoreContext } from "components/base/Context";
+import Message from "components/Message";
+import { CoreContext } from "base/Context";
 
 
 export default function DatabaseSelect(props) {

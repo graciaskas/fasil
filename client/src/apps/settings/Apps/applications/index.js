@@ -1,10 +1,10 @@
 import React from "react"
 import {Link, useHistory} from "react-router-dom"
 
-import Search from "components/base/components/Search"
+import Search from "components/Search"
 
-import data from "components/base/store.apps.data";
-import { SettingsContext } from "components/settings/context/settings.context";
+import data from "base/store.apps.data";
+import { SettingsContext } from "apps/settings/context/settings.context";
 
 const Applications = (props) => {
 

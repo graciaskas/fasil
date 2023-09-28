@@ -1,17 +1,17 @@
 import React from "react";
 
-import Dashboard from "components/motor/Apps/dashboard";
-import Basique from "components/motor/Apps/basiques"
-import Motard from "components/motor/Apps/rapports";
-import Identification from "components/motor/Apps/identification";
-import ProviderIdentification from "components/motor/Apps/identification/contexts/indentification.context";
+import Dashboard from "apps/motor/Apps/dashboard";
+import Basique from "apps/motor/Apps/basiques"
+import Motard from "apps/motor/Apps/rapports";
+import Identification from "apps/motor/Apps/identification";
+import ProviderIdentification from "apps/motor/Apps/identification/contexts/indentification.context";
 
 import Cooperative from "./Apps/cooperative";
 import ProviderCooperative from "./Apps/cooperative/contexts";
 import Parametres from "./Apps/settings";
 import Rapports from "./Apps/rapports"
 
-import { getApp } from "components/base/functions/all";
+import { getApp } from "base/functions/all";
 
 /**
  *Application Controller function

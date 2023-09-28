@@ -1,6 +1,6 @@
 import React from "react";
 //**-- Componets */
-import Table from "components/base/components/Table";
+import Table from "components/Table";
 
 //**-- Data */
 const DefaultColumns  = [

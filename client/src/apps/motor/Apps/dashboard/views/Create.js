@@ -4,7 +4,7 @@ import { Context } from "context";
 import Datepicker from "react-day-picker/DayPickerInput"
 import 'react-day-picker/lib/style.css';
 
-import LoadView from "components/base/functions/loadView";
+import LoadView from "base/functions/loadView";
 
 //**--- Components */
 import Table from "components/base/Table";

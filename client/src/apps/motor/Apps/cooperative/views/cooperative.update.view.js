@@ -1,17 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
-import LoadView from "components/base/functions/loadView";
+import LoadView from "base/functions/loadView";
 
-import { AppContext } from "components/motor/context/app.context";
-import { getUserInfo } from "components/base/functions/all";
-import { URI } from "components/motor/api/uri";
+import { AppContext } from "apps/motor/context/app.context";
+import { getUserInfo } from "base/functions/all";
+import { URI } from "apps/motor/api/uri";
 
 //**--- Components */
-import Datalist from "components/base/components/Datalist";
-import Message from "components/base/components/Message";
+import Datalist from "components/Datalist";
+import Message from "components/Message";
 
 
 import { president, province, ville, quartier, commune, contact,email,setNum,name } from "../handlers/handler.cooperative";
-import { provinces } from "components/motor/Apps/data/provinces";
+import { provinces } from "apps/motor/Apps/data/provinces";
 import { villes } from "../../data/villes";
 import { communes } from "../../data/communes";
 import { quartiers } from "../../data/quartiers";

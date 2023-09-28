@@ -5,14 +5,14 @@ import { useHistory } from 'react-router';
 import Model from '../models/model.motor';
 import modelIdentification from '../models/model.driver';
 import modelOwner from '../models/model.owner';
-import { resetModel } from 'components/base/functions/resetModel';
+import { resetModel } from 'base/functions/resetModel';
 
-import Loading from 'components/base/components/Loading';
-import { getUserInfo } from 'components/base/functions/all';
-import { AppContext } from 'components/motor/context/app.context';
+import Loading from 'components/Loading';
+import { getUserInfo } from 'base/functions/all';
+import { AppContext } from 'apps/motor/context/app.context';
 
-import { userInfos } from 'components/base/auth/access.token';
-import { URI } from 'components/motor/api/uri';
+import { userInfos } from 'base/auth/access.token';
+import { URI } from 'apps/motor/api/uri';
 import axios from 'axios';
 
 export const IdentificationContext = React.createContext();

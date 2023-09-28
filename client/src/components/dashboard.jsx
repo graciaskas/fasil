@@ -1,10 +1,10 @@
 import React from 'react';
 //**=== Components 
-import Header from 'apps/base/components/Header';
+import Header from 'components/Header';
 
-import Store from './base/store.apps';
+import Store from 'base/store.apps';
 
-import authenticate from "./base/auth/access.token";
+import authenticate from "base/auth/access.token";
 
 export default  function AppSelector({match}) {
     return (

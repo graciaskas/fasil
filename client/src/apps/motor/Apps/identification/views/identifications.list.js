@@ -1,5 +1,5 @@
 import React from "react";
-import Table from "components/base/components/Table";
+import Table from "components/Table";
 
 //**-- Data */
 const DefaultColumns  = ['N°','Conducteur','Association',"Gillet",'Propriétaire','Type'];

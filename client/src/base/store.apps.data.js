@@ -1,10 +1,10 @@
 import React from 'react';
 
 /**----- Icons */
-import Motor from 'components/base/icons/survey.png';
-import Settings from'components/base/icons/settings.png';
-import Messages from "components/base/icons/messages.png";
-import Resume from "components/base/icons/mail_push.png";
+import Motor from 'base/icons/survey.png';
+import Settings from'base/icons/settings.png';
+import Messages from "base/icons/messages.png";
+import Resume from "base/icons/mail_push.png";
 
 var data =   [
     {

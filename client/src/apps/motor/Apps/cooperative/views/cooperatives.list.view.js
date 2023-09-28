@@ -1,9 +1,9 @@
 import React from "react";
 //**-- Componets */
-import Table from "components/base/components/Table";
-import Message from "components/base/components/Message";
+import Table from "components/Table";
+import Message from "components/Message";
 import { useContext } from "react/cjs/react.development";
-import { AppContext } from "components/motor/context/app.context";
+import { AppContext } from "apps/motor/context/app.context";
 
 //**-- Data */
 const DefaultColumns  = ["No",'Nom','Province','Président','Email','Ville','Contact','Motards'];

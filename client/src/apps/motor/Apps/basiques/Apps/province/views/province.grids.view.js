@@ -1,8 +1,8 @@
 import React from "react"
 import {Link} from "react-router-dom";
-import { URI } from "components/base/auth/access.token";
+import { URI } from "base/auth/access.token";
 import { useContext } from "react/cjs/react.development";
-import { AppContext } from "components/motor/context/app.context";
+import { AppContext } from "apps/motor/context/app.context";
 
 const ProvinceGrids = ({ data, load }) => {
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { getApp } from "components/base/functions/all";
+import { getApp } from "base/functions/all";
 import Users from "./users";
 import Gillets from "./gillets";
 import GilletProvider  from "./gillets/context/gillet";

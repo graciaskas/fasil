@@ -5,8 +5,8 @@ import { useLocation } from "react-router";
 import IdentificationList from "./identifications.list";
 import Grids from  "./identifications.grid";
 import { parseUrl } from "query-string";
-import Message from "components/base/components/Message";
-import { AppContext } from "components/motor/context/app.context";
+import Message from "components/Message";
+import { AppContext } from "apps/motor/context/app.context";
 
 const IdentificationMain = ({ data }) => { 
     

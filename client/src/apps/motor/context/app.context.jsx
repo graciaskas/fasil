@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
-import Message from "components/base/components/Message";
-import Loading from "components/base/components/Loading";
-import { getUserInfo } from "components/base/functions/all";
+import Message from "components/Message";
+import Loading from "components/Loading";
+import { getUserInfo } from "base/functions/all";
 import { URI } from "../api/uri";
-import { resetModel } from "components/base/functions/resetModel";
-import { CoreContext } from "components/base/Context";
+import { resetModel } from "base/functions/resetModel";
+import { CoreContext } from "base/Context";
 
 export const AppContext = React.createContext();
 

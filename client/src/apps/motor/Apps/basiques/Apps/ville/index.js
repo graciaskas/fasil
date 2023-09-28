@@ -5,9 +5,9 @@ import { Link, Route, useHistory } from "react-router-dom";
 import Webcam from "react-webcam";
 
 //**-- Components */
-import Loading from "components/base/components/Loading";
-import Search from "components/base/components/Search";
-import Table from "components/base/components/Table";
+import Loading from "components/Loading";
+import Search from "components/Search";
+import Table from "components/Table";
 
 import { villes } from "../../../data/villes";
 import { VilleContext } from "../../contexts/villes";

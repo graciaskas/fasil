@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { resetModel } from "components/base/functions/resetModel";
+import { resetModel } from "base/functions/resetModel";
 
 
 import Model from "../models/gillet";
 
-import { URI } from "components/motor/api/uri";
-import { AppContext } from "components/motor/context/app.context";
+import { URI } from "apps/motor/api/uri";
+import { AppContext } from "apps/motor/context/app.context";
 
 
 export const GilletContext = React.createContext();

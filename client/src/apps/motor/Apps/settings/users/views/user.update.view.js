@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { FaUpload, FaTrash } from 'react-icons/fa';
-import { getBas64 } from 'components/base/functions/all';
-import { URI } from 'components/base/auth/access.token';
+import { getBas64 } from 'base/functions/all';
+import { URI } from 'base/auth/access.token';
 
 
-import Select from 'components/base/components/Select';
-import Message from 'components/base/components/Message';
+import Select from 'components/Select';
+import Message from 'components/Message';
 
 import { setName, setUsername, setRole, setPassword, setEmail, setTitle, setImage, setActive } from '../handlers/create.handler';
 
 
-import { AppContext } from 'components/motor/context/app.context';
+import { AppContext } from 'apps/motor/context/app.context';
 import { UserContext } from '../context/user.context';
 import userModel from '../models/user.model';
 import { parseUrl } from 'query-string';

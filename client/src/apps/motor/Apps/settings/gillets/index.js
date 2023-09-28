@@ -7,15 +7,15 @@ import GilletsGrids from "./views/gillet.grids.view.js";
 import GilletsList from "./views/gillet.list.view.js";
 
 //**-- Components */
-import Search from "components/base/components/Search";
+import Search from "components/Search";
 import Create from "./views/create.view.js"
 
 //**-- Contexts */
 import { GilletContext } from "./context/gillet.js";
-import { AppContext } from "components/motor/context/app.context.js";
+import { AppContext } from "apps/motor/context/app.context";
 
 
-import { URI } from "components/motor/api/uri";
+import { URI } from "apps/motor/api/uri";
 //**-- application data */
 const Columns = [
     'Id',

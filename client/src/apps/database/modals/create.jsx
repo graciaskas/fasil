@@ -8,12 +8,12 @@ import {
     RiPhoneFill
 } from "react-icons/ri";
 
-import { DB_URI } from "components/base/auth/access.token";
+import { DB_URI } from "base/auth/access.token";
 
 
-import Message from "components/base/components/Message";
+import Message from "components/Message";
 import { useHistory } from "react-router";
-import { CoreContext } from "components/base/Context";
+import { CoreContext } from "base/Context";
 
 export default function Create ({ display }) {
 

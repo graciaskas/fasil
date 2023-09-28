@@ -1,7 +1,7 @@
 import React,{ useContext, useEffect, useState } from "react";
 import { parse} from "query-string"
 import { useLocation, useParams, useHistory, Link } from "react-router-dom";
-import { IP_ADDR, DB_URI } from "components/base/auth/access.token";
+import { IP_ADDR, DB_URI } from "base/auth/access.token";
 
 import { 
     RiUserFill, 
@@ -9,10 +9,10 @@ import {
     RiBallPenFill
 } from "react-icons/ri";
 
-import Message from "components/base/components/Message";
+import Message from "components/Message";
 import axios from "axios";
-import Loading from "components/base/components/Loading";
-import { CoreContext } from "components/base/Context";
+import Loading from "components/Loading";
+import { CoreContext } from "base/Context";
 
 export default function Login () {
 

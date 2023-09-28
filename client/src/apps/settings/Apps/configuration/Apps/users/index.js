@@ -1,8 +1,8 @@
 import React from 'react';
-import Search from 'components/base/components/Search';
+import Search from 'components/Search';
 import { useHistory } from 'react-router';
 import { Link, Route } from "react-router-dom";
-import { SettingsContext } from 'components/settings/context/settings.context';
+import { SettingsContext } from 'apps/settings/context/settings.context';
 
 function Init( props ) {
     

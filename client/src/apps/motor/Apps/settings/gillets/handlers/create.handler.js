@@ -1,7 +1,7 @@
 import Model from "../models/gillet";
-import { setKeyValue } from "components/base/functions/all";
-import { provinces } from "components/motor/Apps/data/provinces";
-import { communes  } from "components/motor/Apps/data/communes";
+import { setKeyValue } from "base/functions/all";
+import { provinces } from "apps/motor/Apps/data/provinces";
+import { communes  } from "apps/motor/Apps/data/communes";
 
 
 export const setNum = e => { 

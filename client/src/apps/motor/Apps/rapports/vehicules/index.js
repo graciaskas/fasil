@@ -1,13 +1,13 @@
 import React, { useMemo } from "react";
 import { Link, Route, useHistory } from "react-router-dom";
 
-import Search from "components/base/components/Search";
-import { AppContext } from "components/motor/context/app.context";
+import Search from "components/Search";
+import { AppContext } from "apps/motor/context/app.context";
 import { useContext, useEffect, useState } from "react/cjs/react.development";
 import { parseUrl } from "query-string";
 import VehiculeGrids from "./views/vehicules.grid.view";
 import VehiculesList from "./views/vehicules.list.view";
-import Message from "components/base/components/Message";
+import Message from "components/Message";
 import VehiculeGeo from "./views/vehicule.geo.view";
 import { VehiculeContext } from "./contexts/vehicules.context";
 

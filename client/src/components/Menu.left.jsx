@@ -2,7 +2,7 @@ import React,{Component, useState} from "react"
 import {Link} from "react-router-dom"
 
 
-import store from "../store.apps.data";
+import store from "base/store.apps.data";
 
 const LeftMenu  = props => {
     

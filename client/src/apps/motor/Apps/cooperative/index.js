@@ -4,8 +4,7 @@ import { useEffect } from "react";
 import { parseUrl } from "query-string";
 import { FaCogs } from "react-icons/fa";
 
-import Search from "components/base/components/Search";
-
+import Search from "components/Search";
 
 //**-- App components */
 import Create from "./views/cooperative.create.view";
@@ -17,7 +16,7 @@ import CooperativerView from "./views/cooperative.view";
 
 
 import { CooperativeContext } from "./contexts";
-import { AppContext } from "components/motor/context/app.context";
+import { AppContext } from "apps/motor/context/app.context";
 import { URI } from "../../api/uri";
 
 

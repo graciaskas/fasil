@@ -1,9 +1,9 @@
 import React from "react";
 
 import CooperativeGrid from "./cooperative.grid.view";
-import Message from "components/base/components/Message";
+import Message from "components/Message";
 import { useContext } from "react/cjs/react.development";
-import { AppContext } from "components/motor/context/app.context";
+import { AppContext } from "apps/motor/context/app.context";
 
 const CooperativeGrids = ({ data }) => { 
 

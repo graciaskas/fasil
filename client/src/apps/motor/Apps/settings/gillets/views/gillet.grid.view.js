@@ -1,5 +1,5 @@
 import React from "react";
-import { typePersonnes } from "components/motor/Apps/identification/data";
+import { typePersonnes } from "apps/motor/Apps/identification/data";
 
 const GilletGrid = (props) => { 
 

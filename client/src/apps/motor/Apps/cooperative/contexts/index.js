@@ -1,12 +1,12 @@
 import React, { useContext, useCooperativeContext, useEffect, useState} from "react";
-import { URI } from "components/motor/api/uri";
+import { URI } from "apps/motor/api/uri";
 import modelCooperative from "../models/model.cooperative";
 import axios from "axios";
 
 import { useHistory } from "react-router";
-import { getUserInfo } from "components/base/functions/all";
-import { AppContext } from "components/motor/context/app.context";
-import { resetModel } from "components/base/functions/resetModel";
+import { getUserInfo } from "base/functions/all";
+import { AppContext } from "apps/motor/context/app.context";
+import { resetModel } from "base/functions/resetModel";
 
 export const CooperativeContext = React.createContext();
 

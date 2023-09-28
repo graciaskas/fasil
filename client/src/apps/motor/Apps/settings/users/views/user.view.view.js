@@ -2,8 +2,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { parseUrl } from "query-string";
-import { AppContext } from "components/motor/context/app.context";
-import Message from "components/base/components/Message";
+import { AppContext } from "apps/motor/context/app.context";
+import Message from "components/Message";
 import { UserContext } from "../context/user.context";
 
 const View = (props) => { 

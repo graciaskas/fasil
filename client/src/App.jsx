@@ -9,7 +9,7 @@ import Database from "apps/database"
 import Settings from "apps/settings/index";
 import Resume from "apps/resume/index";
 import Motor from 'apps/motor';
-import auth from 'apps/base/auth/access.token';
+import auth from 'base/auth/access.token';
 
 const App = () => { 
     auth();

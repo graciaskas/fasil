@@ -2,12 +2,12 @@ import React,{ useContext, useEffect, useState }  from "react";
 import { Link, useHistory } from "react-router-dom";
 import { RiDeleteBinFill } from "react-icons/ri";
 import {  FaClone, FaTrashRestore } from "react-icons/fa";
-import { DB_URI } from "components/base/auth/access.token";
+import { DB_URI } from "base/auth/access.token";
 
 
 import axios from "axios";
-import Message from "components/base/components/Message";
-import { CoreContext } from "components/base/Context";
+import Message from "components/Message";
+import { CoreContext } from "base/Context";
 
 
 

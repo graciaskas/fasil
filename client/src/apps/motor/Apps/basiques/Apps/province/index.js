@@ -2,8 +2,8 @@ import React, { useContext, useMemo, useState} from "react";
 import { Link, Route, useHistory } from "react-router-dom";
 
 //**-- Components */
-import Search from "components/base/components/Search";
-import Message from "components/base/components/Message";
+import Search from "components/Search";
+import Message from "components/Message";
 
 
 import { provinces } from "../../../data/provinces";
@@ -12,7 +12,7 @@ import { ProvinceContext } from "./contexts/province";
 import Create from "./views/province.create.view";
 import ProvincesList from "./views/province.list.view";
 import ProvinceGrids from "./views/province.grids.view";
-import { AppContext } from "components/motor/context/app.context";
+import { AppContext } from "apps/motor/context/app.context";
 import { parseUrl } from "query-string";
 
 //**-- application data */

@@ -1,15 +1,15 @@
 import React,{ useContext, useEffect, useRef, useState } from "react"
 import { Link, useHistory} from 'react-router-dom';
 
-import store from "../store.apps.data";
-import { userInfos } from "../auth/access.token";
+import store from "base/store.apps.data";
+import { userInfos } from "base/auth/access.token";
 
 import { RiMessage2Fill, RiNotification3Fill } from "react-icons/ri";
 import {  FaUserCircle, FaFacebookMessenger} from "react-icons/fa";
 
-import Notification from "./Header/Notification";
-import Branding from "./Header/Branding";
-import Navlink from "./Header/NavLink";
+import Notification from "components/Notification";
+import Branding from "components/HeaderBranding";
+import Navlink from "components/HeaderNavLink";
 
 
 const Header  =  props => {

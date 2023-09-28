@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
-import Datalist from 'components/base/components/Datalist';
+import Datalist from 'components/Datalist';
 import { useState } from 'react/cjs/react.development';
 import { FaTrash, FaUpload } from 'react-icons/fa';
-import { getBas64 } from 'components/base/functions/all';
-import LoadView from 'components/base/functions/loadView';
+import { getBas64 } from 'base/functions/all';
+import LoadView from 'base/functions/loadView';
 
 import { setName, setImage } from "../handlers/componay.handlers";
 
