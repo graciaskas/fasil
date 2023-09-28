@@ -43,5 +43,8 @@
   },
   "keywords": [],
   "author": "Gracias Kasongo",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
 }

@@ -14,7 +14,6 @@ export default function DatabaseSelect(props) {
     const [ data, setData ] = useState([]);
     const history = useHistory();
   
-
     const getData = async function () {
         try {
             setLoading(true)

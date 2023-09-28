@@ -1,6 +1,6 @@
 import React from "react";
 
-import Application from "./components/App";
+import Application from "../App";
 import Applications from "./store.apps.data";
 
 export default function Store( props ) { 

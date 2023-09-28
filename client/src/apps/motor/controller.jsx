@@ -7,7 +7,7 @@ import Identification from "components/motor/Apps/identification";
 import ProviderIdentification from "components/motor/Apps/identification/contexts/indentification.context";
 
 import Cooperative from "./Apps/cooperative";
-import ProviderCooperative from "./Apps/cooperative/contexts/";
+import ProviderCooperative from "./Apps/cooperative/contexts";
 import Parametres from "./Apps/settings";
 import Rapports from "./Apps/rapports"
 

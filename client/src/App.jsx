@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router ,Switch,  Route} from 'react-router-dom';
 // comit git zone url = https://www.zone-telechargement.cloud/?p=manga&id=587-boruto-naruto-next-generations-saison1
-import NotFound from "./components/notfound";
+import NotFound from "components/404";
 //--- App Store Component
-import Dashboard from "./components/dashboard";
-import Database from "components/database"
+import Dashboard from "components/Dashboard";
+import Database from "apps/database"
 //**---------    Applications
-import Settings from "./components/settings/index";
-import Resume from "./components/resume/index";
-import Motor from 'components/motor';
-import auth from 'components/base/auth/access.token';
+import Settings from "apps/settings/index";
+import Resume from "apps/resume/index";
+import Motor from 'apps/motor';
+import auth from 'apps/base/auth/access.token';
 
 const App = () => { 
     auth();

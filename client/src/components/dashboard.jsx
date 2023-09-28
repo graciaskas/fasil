@@ -1,6 +1,6 @@
 import React from 'react';
 //**=== Components 
-import Header from './base/components/Header';
+import Header from 'apps/base/components/Header';
 
 import Store from './base/store.apps';
 
