@@ -7,8 +7,10 @@ const Users = require("../../Base/models/user.model");
 const login = async (req,res) => { 
     try {   
         let { username, password, database } = req.body;
+
         //--- initialize database
-        await initDB(database, req, res);
+        initDB(database, req, res);
+
         let email = username;
         //--- verify login info
         if (!email || !password || !database) { 
