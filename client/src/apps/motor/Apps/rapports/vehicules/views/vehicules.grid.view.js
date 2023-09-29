@@ -64,7 +64,7 @@ const VehiculeGrids = ({ data, load, state }) => {
                         <div  className="col-lg-3 col-md-6 col-sm-6 col-xs-12 box__link" key={i}>
                             <div className="box__user">
                                 <div className="box__image user">
-                                    <img src={ engine.image ? engine.image : "/src/image.png"}/>
+                                    <img src={ engine.image ? engine.image : "/src/image.png"} alt=""/>
                                 </div>
                                 <div className="box__description user">
                                     <h4><strong>{engine.marque}</strong> [{engine.model}] </h4>
@@ -75,7 +75,7 @@ const VehiculeGrids = ({ data, load, state }) => {
                                     <div className="descripton__dots">
                                         <div className="navbar" style={{  height:0}}>
                                             <div className="dropdown show">
-                                                <div className="dots" data-toggle="dropdown" aria-haspopup="true" aria-haspopup="true" id={engine._id}>
+                                                <div className="dots" data-toggle="dropdown" aria-haspopup="true"  id={engine._id}>
                                                     <span></span>
                                                     <span></span>
                                                     <span></span>

@@ -1,23 +1,24 @@
-import React from "react"
+import React from "react";
 import { Link } from "react-router-dom";
 
-export default function NotFound(){
-    return(
-       
-        <>
-            <div className="dashboard" style={{ height:"100vh"}}>
-                <div className="center">
-                    <h1 className="text-white">Page Not found !</h1>
-                    <p className="text-center text-white">Either you entered manually the url address.</p>
-                    <h1>
-                        <code className="text-white">404</code>
-                    </h1>
-                    <Link to={"/dashboard"}>
-                        <button className="bg-o">Back home</button>
-                    </Link>
-                </div>
+export default function NotFound() {
+   return (
+      <>
+         <div className="form__flex" style={{ height: "100vh" }}>
+            <div className="center">
+               <h1>404 | Page non trouvée !</h1>
+               <p>Vous avez peut etre essayer une adresse invalide...</p>
+
+               <br />
+               <br />
+               <Link
+                  to={"/"}
+                  className="p-2 bg-blue-500 rounded-full text-white px-3"
+               >
+                  Back home
+               </Link>
             </div>
-        
-        </>
-    )
+         </div>
+      </>
+   );
 }

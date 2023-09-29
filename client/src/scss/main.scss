@@ -1,7 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800;900&display=swap');
+@font-face {
+	font-family: 'San Francisco';
+	src: url(base/fonts/sansfransisco.otf);
+}
+
+@layer base {
 :root {
 	--white: #fff;
 	--white-primary: #efefef;
-	--blue-primary: #60437ce0;
+	--blue-primary: @apply bg-blue-500;
 	--dark-primary: #5d5b5b;
 	--dark-border: #c8c8d3dc;
 	--dark-opacity: rgba(0, 0, 0, 0.15);
@@ -15,21 +26,15 @@
 	/***** --- Font Size --- *****/
 	--smaller: 0.75em;
 	--small: 0.845em;
-	--small-2: 0.89em;
+	--small-2: 0.9em;
 	--small-3: 0.95em;
 	--small-4: 1em;
 }
-
-@font-face {
-	font-family: 'San Francisco';
-	src: url(../fonts/sansfransisco.otf);
-}
-
 * {
 	box-sizing: border-box !important;
 	line-height: 1.6em;
 	padding: 0;
-	font-family: 'San Francisco';
+	font-family: Inter,'San Francisco', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	margin: 0;
 	user-select: none;
 }
@@ -53,38 +58,29 @@ i,
 td,
 a,
 label {
-	font-family: 'San Francisco', 'Segoe UI', 'Arial', Tahoma, Geneva, Verdana,
-		Candara !important;
-	font-weight: 400 !important;
+	
+	// font-weight: 300 !important;
 	text-decoration: none !important;
 	list-style: none;
 	font-size: var(--small-2) !important;
 	margin-bottom: 0px !important;
 }
 
-button {
-	outline: none;
-	user-select: none;
-	border-radius: 2px !important;
-	display: inline-block;
-	margin-bottom: 0;
-	font-weight: normal;
-	text-align: center;
-	vertical-align: middle;
-	touch-action: manipulation;
-	cursor: pointer;
-	background-image: none;
-	border: 1px solid transparent;
-	white-space: nowrap;
-	padding: 5px 10px !important;
-	font-size: 13px !important;
-	line-height: 1.42857143;
-	border-radius: 2px !important;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	outline: none;
+
+h1{
+	@apply text-4xl font-bold;
+}
+
+h2 {
+	@apply text-3xl font-bold;
+}
+
+h3{
+	@apply text-2xl font-bold;
+}
+
+h4{
+	@apply text-xl font-bold;
 }
 
 img {
@@ -94,73 +90,68 @@ img {
 
 input {
 	outline: none;
-	color: var(--dark-primary);
+	padding: 0 8px;
+	&::placeholder{
+		font-size: .87rem;
+	}
 }
 
 input:disabled {
-	background: #e4e4e4 !important;
+	@apply bg-slate-100;
+	user-select: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: 'San Francisco' !important;
-	font-weight: 550;
 }
 
-h4 {
-	font-size: 17px !important;
+
+
+/*** Form ***/
+@layer components{
+	.form__flex {
+		@apply flex flex-col h-screen items-center justify-center bg-slate-100;
+	}
+	.form {
+		@apply bg-white rounded-md  shadow-md;
+		min-width: 30rem;
+		padding: 2rem;
+		.form__control{
+			@apply flex flex-row items-center border border-gray-300 rounded-md p-[.45rem] text-sm;
+			@apply mb-3 ;
+			
+		}
+		
+		.form__header {
+			text-align: center;
+			@apply border-b border-gray-300 pb-3 mb-4;
+		}
+	}
 }
 
-table {
-	width: 100%;
+/** Buttons **/
+@layer components {
+	.btn {
+		@apply p-2 px-3 rounded-md active:p-[.48rem] active:px-[.68rem] text-sm;
+		&.btn-primary {
+			@apply bg-blue-500 text-white  ;
+		}
+	}
 }
 
-table thead tr th {
-	padding: 3px 12px !important;
-	color: var(--dark-primary);
-	font-size: 14px;
-	font-weight: 500;
-	text-align: start;
-	background-color: var(--dark-shadow);
-	border-top: 1px solid rgb(200, 200, 200);
-	border-bottom: 2px solid rgb(200, 200, 200) !important;
-}
-table tbody tr:nth-child(even) {
-	background: var(--dark-shadow);
-}
-table tbody tr#row:hover {
-	cursor: pointer !important;
-}
-table td {
-	padding: 0.17em 10px !important;
-	color: var(--dark-primary) !important;
-	font-size: var(--small) !important;
-	text-align: start;
-	vertical-align: auto;
-}
-table td img {
-	width: 30px;
-	height: 30px;
-	border-radius: 2px;
-}
+
 /** Bootstrap modified classes **/
 /** Notification **/
 .notification {
 	position: fixed;
 	height: auto !important;
-	box-shadow: 0 0 3px var(--dark-shadow);
+	@apply shadow-md rounded-md bg-white;
 	z-index: 100;
-	width: 350px;
+	min-width: 350px;
 	right: 12px;
 	top: 60px;
 	padding: 0.42rem 1.05rem;
 	margin-bottom: 1rem;
 	border: 1px solid transparent;
-	border-radius: 0.15rem;
+	
 }
 
 .notification-header {
@@ -168,59 +159,7 @@ table td img {
 	justify-content: space-between;
 }
 
-.alert {
-	font-size: var(--small-2);
-}
 
-.alert-danger,
-.notification-danger {
-	border-left: 5px solid #721c24 !important;
-}
-.alert-danger .alert-closer,
-.notification-danger .alert-closer {
-	background: #721c24;
-}
-
-.alert-success,
-.notification-success {
-	border-left: 5px solid #105724 !important;
-}
-.alert-success .alert-closer,
-.notification-success .alert-closer {
-	background: #105724;
-}
-
-.alert-info,
-.notification-info {
-	border-left: 5px solid #0c5460 !important;
-}
-.alert-info .alert-closer,
-.notification-info .alert-closer {
-	background: #0c5460;
-}
-
-.alert-warning,
-.notification-warning {
-	border-left: 5px solid #856404 !important;
-}
-.alert-warning .alert-closer,
-.notification-warning .alert-closer {
-	background: #856404;
-}
-
-.alert-closer {
-	cursor: pointer;
-	color: #fff;
-	font-weight: bolder;
-	float: right;
-	font-size: 18px;
-	height: 22px !important;
-	padding: 0 2px;
-	border-radius: 100%;
-	position: absolute !important;
-	right: 7px;
-	top: 7px;
-}
 .dropdown {
 	top: -3px;
 	padding: 0 !important;
@@ -242,30 +181,11 @@ table td img {
 }
 /**== Components */
 
-/** 0. Buttons **/
-.btn-square {
-	color: #666 !important;
-	background: #fff;
-}
-.btn-default {
-	background-color: var(--blue-primary);
-	color: #fff;
-}
 
-/**=== 1. Dashboard      */
-.dashboard {
-	background-color: var(--blue-primary);
-	overflow: hidden;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	width: 100%;
-}
-
-.shadow {
+.app__modules {
 	position: absolute;
 	width: 100%;
-	background: url(../src/bg_image.svg),
+	background: url('../../public/src/bg_image.svg'),
 		linear-gradient(to right bottom, #2a2a36, var(--blue-primary));
 	background-size: auto, auto;
 	background-size: cover;
@@ -275,79 +195,10 @@ table td img {
 	background-size: cover;
 }
 
-/**=== 2.Header Section */
-.header {
-	background-color: var(--blue-primary);
-	color: var(--white-primary);
-	height: 50px;
-}
-.header .brand {
-	width: auto;
-	height: inherit;
-	padding-right: 15px;
-	display: flex;
-}
-.header .brand h1 {
-	padding: 5px;
-}
-.header .brand .menuGrid {
-	width: 50px;
-	height: 50px;
-	text-align: center;
-	overflow: hidden;
-	padding: 10px;
-	cursor: pointer;
-}
-.header .brand .menuGrid:hover {
-	background-color: rgba(0, 0, 0, 0.15);
-}
-
-.header .brand .menuGrid span {
-	font-size: 22px;
-	cursor: pointer;
-}
-
-.header li {
-	font-size: 15px;
-	list-style: none;
-	height: 50px !important;
-	text-transform: capitalize;
-	text-align: center !important;
-	color: var(--white-primary);
-	position: relative;
-	cursor: pointer;
-}
-
-.header li > a {
-	display: block;
-	padding: 12px;
-
-	height: 50px;
-	font-size: var(--small-4) !important;
-}
-
-.header .nav-item:hover {
-	background: rgba(0, 0, 0, 0.2);
-}
-.header .nav-item a i {
-	font-size: var(--small) !important;
-	font-weight: bolder !important;
-	border-radius: 4px;
-	position: absolute;
-	top: -13px;
-	right: 7px;
-	padding: 2px 4px;
-	font-style: normal;
-	position: relative;
-	margin-top: -10px;
-}
-.header .nav-item a span {
-	font-size: 22px;
-}
 
 /**************** Login *****************************/
 .login-container {
-	background-color: #efefef;
+	@apply bg-slate-100;
 	color: var(--dark-primary) !important;
 	display: block;
 	height: 100%;
@@ -375,118 +226,7 @@ table td img {
 	border-radius: 5px;
 }
 
-.login-container .s-main .s-container {
-	width: 100%;
-	background-color: rgb(255, 255, 255);
-	box-shadow: 0 6px 12px var(--dark-shadow);
-	padding: 20px 40px;
-	border-radius: 3px;
-	border: 1px solid var(--dark-opacity);
-}
 
-.login-container .s-main .s-container .head {
-	padding: 0px 0px !important;
-	text-align: center !important;
-}
-
-.login-container .s-container #db-list .db-item {
-	list-style-type: none;
-	padding: 5px 0px;
-	border-bottom: 1px solid #efefef;
-	color: var(--blue-primary);
-	display: flex;
-	justify-content: space-between;
-}
-
-.login-container .s-container #db-list .db-item:hover {
-	border-left: 2px solid var(--blue-primary);
-	padding-left: 20px;
-	transition: 0.2s;
-}
-
-.login-container .s-container #db-list a {
-	color: var(--blue-primary);
-	flex: 2;
-}
-
-.login-container .s-container #db-list a:hover {
-	font-weight: bold;
-	transition: 0.2s;
-}
-
-.database-buttons {
-	display: flex;
-}
-
-.database-buttons button {
-	padding: 2px 7px;
-	border: 1px solid transparent;
-	color: var(--dark-primary) !important;
-	margin: 2px;
-	cursor: pointer;
-	border-radius: 2px;
-}
-.database-buttons .bg-danger,
-.database-buttons .bg-blue {
-	color: white;
-}
-
-.form {
-	width: 100%;
-}
-.form .form-e {
-	width: 100%;
-	border: 1px solid rgb(220, 220, 224);
-	margin: 0.625rem 0;
-	text-align: center;
-	height: 2.25rem;
-	border-radius: 0.18rem;
-	outline: none;
-	overflow: hidden;
-	display: flex;
-	flex-wrap: nowrap;
-}
-.form .form-e.overflow {
-	overflow: visible !important;
-	position: relative !important;
-}
-
-.form .form-e .icon {
-	width: 2.4rem;
-	padding-top: 0.33rem;
-	color: var(--blue-primary);
-	overflow: hidden;
-	font-size: 15px;
-}
-
-.form .form-e input {
-	border: none;
-	outline: none;
-	padding: 0 0.3rem !important;
-	flex: 2;
-}
-
-.form .form-e a.btn.bg-blue {
-	font-size: var(--smaller) !important;
-	border-radius: 1px !important;
-}
-
-@media (min-width: 100px) and (max-width: 600px) {
-	.db-item {
-		display: block;
-	}
-}
-
-@media (min-width: 100px) and (max-width: 800px) {
-	.login-container .s-main {
-		width: 95%;
-		margin: 2% auto;
-		max-height: 100%;
-	}
-	.login-container .s-main .s-container {
-		padding: 10px 15px;
-	}
-}
 
 /**============= Main container =============**/
 .flex-container {
@@ -875,7 +615,7 @@ Link {
 	padding-right: 15px;
 }
 .main-container.bg-sheet {
-	background-image: url(../src/form_sheetbg.png) !important;
+	background-image: url('../../public/src/form_sheetbg.png') !important;
 }
 .main-container.bg-white {
 	background: #fff !important;
@@ -1117,19 +857,7 @@ Link {
 	color: #fff;
 }
 
-/***** btns ******/
 
-.buttons {
-	padding-bottom: 7px;
-}
-
-.boutton {
-	padding: 7px 20px;
-	cursor: pointer;
-	border: 1px solid #ddd;
-	outline: none;
-	border-radius: 5px;
-}
 .bg-default {
 	background-color: #fff;
 }

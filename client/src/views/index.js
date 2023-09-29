@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import Manager from './Apps/manager';
 import Select from "./Apps/Select";
-import Login from './Apps/login';
+import Login from './Login';
 import Create from './modals/create';
 
 
