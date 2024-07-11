@@ -1,89 +1,93 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router";
+import { useLocation } from "react-router";
 import { resetModel } from "base/functions/resetModel";
-
 
 import Model from "../models/gillet";
 
 import { URI } from "apps/motor/api/uri";
 import { AppContext } from "apps/motor/context/app.context";
 
-
 export const GilletContext = React.createContext();
 
-const Provider = ({ children }) => { 
-
-   const history = useHistory();
+const Provider = ({ children }) => {
+   const history = useLocation();
 
    //App Context values
-   const { 
+   const {
       database,
       token,
       setLoading,
-      message, setMessage,
+      message,
+      setMessage,
       //**-----  Gillets
       gillets,
       setLoadGillets,
       getGillets,
-      setGillets
+      setGillets,
    } = useContext(AppContext);
 
    //Search input handler
-	const handleSearch = (e) => {
-		const search = e.target.value.toString().toLowerCase();
-		const found = gillets.filter((element) => {
+   const handleSearch = (e) => {
+      const search = e.target.value.toString().toLowerCase();
+      const found = gillets.filter((element) => {
          const num = element.num.toString().toLowerCase();
          const association = element.association.toString().toLowerCase();
          const motard = element.motard.toString().toLowerCase();
-         return num.includes(search) || association.includes(search) || motard.includes(search)
+         return (
+            num.includes(search) ||
+            association.includes(search) ||
+            motard.includes(search)
+         );
       });
-		if (found.length == 0 || search == null || search == '') return getGillets();
-		setGillets(found);
-	};
+      if (found.length == 0 || search == null || search == "")
+         return getGillets();
+      setGillets(found);
+   };
 
    const createGillet = async () => {
       try {
-         setLoading(true); 
+         setLoading(true);
          fetch(URI + "/gillets", {
-            method: "POST", headers: {
+            method: "POST",
+            headers: {
                "Content-Type": "application/json",
-               "Authorization": "Bearer " + token
+               Authorization: "Bearer " + token,
             },
-            body: JSON.stringify({ Model, database })
+            body: JSON.stringify({ Model, database }),
          })
-            .then(res => {
-               setLoading(false)
+            .then((res) => {
+               setLoading(false);
                return res.json();
-            }).then(data => {
+            })
+            .then((data) => {
                setMessage({ message: data.message, type: data.type });
                if (data.data) {
                   setGillets(data);
                   resetModel(Model);
-                  setTimeout(() => history.push("/motor/parametres/gillets"), 200)
+                  setTimeout(
+                     () => history.push("/motor/parametres/gillets"),
+                     200
+                  );
                }
             })
-            .catch(e => console.log(e));
+            .catch((e) => console.log(e));
       } catch (error) {
-         setMessage({ message: error.message, type: 'danger' });
+         setMessage({ message: error.message, type: "danger" });
       }
    };
 
-
    const values = {
-		handleSearch,
-      createGillet
-	};
+      handleSearch,
+      createGillet,
+   };
 
-   useEffect(() => { 
+   useEffect(() => {
       setLoadGillets(true);
-   },[]);
+   }, []);
 
-
-   return(
-   <GilletContext.Provider value={ values }>
-      {children}
-   </GilletContext.Provider>)
+   return (
+      <GilletContext.Provider value={values}>{children}</GilletContext.Provider>
+   );
 };
-
 
 export default Provider;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Colgroup = ({ colgroup }) => {
    return (
@@ -96,7 +96,7 @@ export const Table = (props) => {
       lineRefLink,
    } = props;
 
-   const history = useHistory();
+   const history = useLocation();
    const { pathname, search } = history.location;
 
    const [addLine, setAddLine] = useState(false);

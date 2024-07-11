@@ -1,32 +1,33 @@
 import React from "react";
-import { getApp } from "base/functions/all";
+import { getModuleFromPath } from "base/functions/all";
 import Users from "./users";
 import Gillets from "./gillets";
-import GilletProvider  from "./gillets/context/gillet";
-import UserProvider  from "./users/context/user.context";
+import GilletProvider from "./gillets/context/gillet";
+import UserProvider from "./users/context/user.context";
 
-const Controller = ({ match }) => { 
-    //Store current application
-    const Application = getApp(match.url);
+const Controller = ({ match }) => {
+   //Store current application
+   const Application = getModuleFromPath(match.url);
 
-    //**--- Switch application and return corresponding application
-        switch (Application) {
-            case "utilisateurs":  
-                return(
-                    <UserProvider>
-                        <Users />
-                    </UserProvider>
-                );                
-                break;
-            case "gillets":  
-                return(
-                    <GilletProvider>
-                        <Gillets />
-                    </GilletProvider>)
-            default :
-                return  <>odoo</>
-        }
-    //**--- End of Switch
+   //**--- Switch application and return corresponding application
+   switch (Application) {
+      case "utilisateurs":
+         return (
+            <UserProvider>
+               <Users />
+            </UserProvider>
+         );
+         break;
+      case "gillets":
+         return (
+            <GilletProvider>
+               <Gillets />
+            </GilletProvider>
+         );
+      default:
+         return <>odoo</>;
+   }
+   //**--- End of Switch
 };
 
 export default Controller;

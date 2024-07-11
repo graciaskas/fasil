@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, Route, useHistory } from "react-router-dom";
+import { Link, Route, useLocation } from "react-router-dom";
 import { SettingsContext } from "apps/settings/context/settings.context";
 import Search from "components/Search";
 import Message from "components/Message";
@@ -10,7 +10,7 @@ import { getUserInfo } from "base/functions/all";
 import companyModel from "./models/company.model";
 
 const Init = (props) => {
-   const { location } = useHistory();
+   const { location } = useLocation();
    const { message, setMessage } = useContext(CoreContext);
    const { database, token } = getUserInfo();
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Route, useHistory } from "react-router-dom";
+import { Link, Route, useLocation } from "react-router-dom";
 
 import Webcam from "react-webcam";
 
@@ -52,7 +52,7 @@ const VillesList = ({ columns, data }) => {
 
 const Quartier = (props) => {
    const [loading, setLoading] = useState(false);
-   const { location } = useHistory();
+   const { location } = useLocation();
 
    return (
       <div className="page" id="page">

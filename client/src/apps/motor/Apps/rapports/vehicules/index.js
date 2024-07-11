@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Link, Route, useHistory } from "react-router-dom";
+import { Link, Route, useLocation } from "react-router-dom";
 
 import Search from "components/Search";
 import { AppContext } from "apps/motor/context/app.context";
@@ -11,32 +11,30 @@ import Message from "components/Message";
 import VehiculeGeo from "./views/vehicule.geo.view";
 import { VehiculeContext } from "./contexts/vehicules.context";
 
-
-const filters = [ 
-   { name : "Model", value: "model"   },
-   { name : "Marque", value: "marque" },
-   { name: "Moteur", value: "moteur"  },
-   { name: "Plaque", value: "plaque"  }
-]
+const filters = [
+   { name: "Model", value: "model" },
+   { name: "Marque", value: "marque" },
+   { name: "Moteur", value: "moteur" },
+   { name: "Plaque", value: "plaque" },
+];
 
 /**
  * View Selector Component
- * @param {*} param0 
+ * @param {*} param0
  * @returns React component
  */
-const ViewSelector = ({ data, viewType, load, state }) => { 
+const ViewSelector = ({ data, viewType, load, state }) => {
    //Return Grids view
-   if(viewType === "grid") return <VehiculeGrids data={data} load={load} state={state}/>
+   if (viewType === "grid")
+      return <VehiculeGrids data={data} load={load} state={state} />;
    // Return Table view
-   if(viewType === "list") return <VehiculesList data={data}/>
+   if (viewType === "list") return <VehiculesList data={data} />;
    //Default return Grids view
-   return <VehiculeGrids data={data} load={load} state={state}/>
+   return <VehiculeGrids data={data} load={load} state={state} />;
 };
 
-
-const Vehicules = props => { 
-   
-   const { location } = useHistory();
+const Vehicules = (props) => {
+   const { location } = useLocation();
    const { search } = location;
    const { query } = parseUrl(search);
    const { viewType } = query;
@@ -44,20 +42,22 @@ const Vehicules = props => {
    const { getEngines, message, setMessage } = useContext(AppContext);
    const { engines, setEngines } = useContext(VehiculeContext);
 
-   const [ loadEngines, setLoadEngines ] = useState(false);
+   const [loadEngines, setLoadEngines] = useState(false);
 
    const enginesMemo = useMemo(() => engines, [engines]);
    const viewMemo = useMemo(() => viewType, [viewType]);
 
-   useEffect(() => { //When componet is mounted
+   useEffect(() => {
+      //When componet is mounted
       getEngines(setEngines); // get engines
-   },[]);
+   }, []);
 
-   useEffect(() => { //When request for reload data from server
+   useEffect(() => {
+      //When request for reload data from server
       getEngines(setEngines);
-   },[loadEngines]);
+   }, [loadEngines]);
 
-   return(
+   return (
       <div className="page" id="page">
          <div className="headPage" id="AppHeaderPage">
             <div className="headPageTitle">
@@ -70,31 +70,38 @@ const Vehicules = props => {
                <div className="buttons " id="myButtons"></div>
             </div>
 
-            <Search 
-               viewType="both" 
-               data= {[]} 
-               location= {location} 
-               filters = {filters} 
+            <Search
+               viewType="both"
+               data={[]}
+               location={location}
+               filters={filters}
                searching={true}
-               context={VehiculeContext} 
+               context={VehiculeContext}
             />
-         </div> {/************************************** End PageHeader */}
-
+         </div>{" "}
+         {/************************************** End PageHeader */}
          <Route path={"/motor/rapports/vehicules"} exact>
-            <div className="bodyContainer" id="bodyContainer" >
+            <div className="bodyContainer" id="bodyContainer">
                <div id="action_bar" style={{ display: "none" }}></div>
-               <div className="main-container bg-gray" id="main_container" >
-                  <Message message={message.message} type={message.type} handler={setMessage}/>
-                  <ViewSelector data={enginesMemo} viewType={viewMemo} load={setLoadEngines} state={loadEngines}/>
+               <div className="main-container bg-gray" id="main_container">
+                  <Message
+                     message={message.message}
+                     type={message.type}
+                     handler={setMessage}
+                  />
+                  <ViewSelector
+                     data={enginesMemo}
+                     viewType={viewMemo}
+                     load={setLoadEngines}
+                     state={loadEngines}
+                  />
                </div>
-            </div> {/************************************** End BodyContainer */}
+            </div>{" "}
+            {/************************************** End BodyContainer */}
          </Route>
-
          <Route path={"/motor/rapports/vehicules/view"} exact>
             <VehiculeGeo />
          </Route>
-
-
       </div>
    );
 };

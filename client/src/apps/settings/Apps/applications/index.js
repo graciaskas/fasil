@@ -1,13 +1,13 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import Search from "components/Search";
 
-import data from "base/store.apps.data";
+import data from "base/modules";
 import { SettingsContext } from "apps/settings/context/settings.context";
 
 const Applications = (props) => {
-   const history = useHistory();
+   const history = useLocation();
    const { location } = history;
 
    return (

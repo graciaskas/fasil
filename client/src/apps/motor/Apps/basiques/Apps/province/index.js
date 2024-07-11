@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from "react";
-import { Link, Route, useHistory } from "react-router-dom";
+import { Link, Route, useLocation } from "react-router-dom";
 
 //**-- Components */
 import Search from "components/Search";
@@ -26,7 +26,7 @@ const ViewSelector = ({ data, viewType }) => {
 
 const Province = (props) => {
    const { message, setMessage } = useContext(AppContext);
-   const { location } = useHistory();
+   const { location } = useLocation();
    const { search } = location;
    const { query } = parseUrl(search);
    const { viewType } = query;

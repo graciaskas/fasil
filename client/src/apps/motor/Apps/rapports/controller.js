@@ -1,6 +1,5 @@
 import React from "react";
-import { getApp } from "base/functions/all";
-
+import { getModuleFromPath } from "base/functions/all";
 
 import Vehicules from "./vehicules";
 import VehiculeProvider from "./vehicules/contexts/vehicules.context";
@@ -8,22 +7,22 @@ import Identifications from "./identifications";
 
 /**
  *Application Controller function
- * @param {*} param0 
+ * @param {*} param0
  * return application compoenent
  */
- const Controller = ({ match }) => { 
+const Controller = ({ match }) => {
    //Store current application
-   const Application = getApp(match.url);
-   //**--- Switch application 
+   const Application = getModuleFromPath(match.url);
+   //**--- Switch application
    switch (Application) {
       case "vehicules":
-         return(
+         return (
             <VehiculeProvider>
                <Vehicules />
             </VehiculeProvider>
-         )
+         );
       default:
-         return(<Identifications />)
+         return <Identifications />;
    }
 };
 

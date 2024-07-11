@@ -20,7 +20,7 @@ const Navlink = (props) => {
             className="navigation__link flex items-center"
             to="#"
             id={menu.name}
-            data-dropdown-toggle="dropdown"
+            data-dropdown-toggle={`dropdown-${menu.name}`}
          >
             <span className="">{menu.name}</span>{" "}
             <svg
@@ -34,14 +34,14 @@ const Navlink = (props) => {
                   stroke="currentColor"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeWidth="2"
                   d="m1 1 4 4 4-4"
                />
             </svg>
          </Link>
 
          <div
-            id="dropdown"
+            id={`dropdown-${menu.name}`}
             class="overflow-hidden z-10 hidden bg-white divide-y divide-gray-100 rounded-md shadow w-44 dark:bg-gray-700"
          >
             <ul

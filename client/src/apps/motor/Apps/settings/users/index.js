@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, Route, useHistory, useLocation } from "react-router-dom";
+import { Link, Route, useLocation } from "react-router-dom";
 import { parseUrl } from "query-string";
 import { FaCogs } from "react-icons/fa";
 
@@ -115,8 +115,8 @@ const UserGrids = ({ data }) => {
 };
 
 const Users = (props) => {
-   const history = useHistory();
-   const { location } = useHistory();
+   const history = useLocation();
+   const { location } = useLocation();
    const { search } = location;
    const { query } = parseUrl(search);
    const id = query.q ? query.q : null; //Get the current ID

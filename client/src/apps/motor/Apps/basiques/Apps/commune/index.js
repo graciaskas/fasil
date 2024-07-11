@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Route, useHistory } from "react-router-dom";
+import { Link, Route, useLocation } from "react-router-dom";
 
 //**-- Components */
 import Loading from "components/Loading";
@@ -51,7 +51,7 @@ const CommunesList = ({ columns, data }) => {
 
 const Quartier = (props) => {
    const [loading, setLoading] = useState(false);
-   const { location } = useHistory();
+   const { location } = useLocation();
 
    return (
       <div className="page" id="page">

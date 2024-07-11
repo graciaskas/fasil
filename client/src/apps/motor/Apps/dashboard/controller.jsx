@@ -1,20 +1,29 @@
 import React from "react";
 
-import { getModuleFromPath } from "base/functions/all";
+import Dashboard from ".";
 
+import { getModuleFromPath } from "base/functions/all";
 /**
  *Application Controller function
  * @param {*} param0
  * return application compoenent
  */
 const Controller = ({ match }) => {
+   /**--------
+    * Get the name of current application
+    * @param {*} url - current url
+    * @returns Application name
+    */
    //Store current application
    const Application = getModuleFromPath(match.url);
-   console.log(Application);
+
    //**--- Switch application and return corresponding application
    switch (Application) {
+      case "dashboard":
+         return <Dashboard />;
+         break;
       default:
-         return null;
+         return "The Rose";
    }
    //End of Switch
 };

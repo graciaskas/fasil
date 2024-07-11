@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, Route, useHistory, useLocation } from "react-router-dom";
+import { Link, Route, useLocation } from "react-router-dom";
 import { parseUrl } from "query-string";
 
 import GilletsGrids from "./views/gillet.grids.view.js";
@@ -42,8 +42,8 @@ const GilletsListGrids = ({ data }) => {
 };
 
 const Gillets = (props) => {
-   const history = useHistory();
-   const { location } = useHistory();
+   const history = useLocation();
+   const { location } = useLocation();
    const { token, database } = useContext(AppContext);
 
    //**-- MainApp context values */

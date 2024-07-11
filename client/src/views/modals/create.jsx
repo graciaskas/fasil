@@ -11,11 +11,11 @@ import {
 import { DB_URI } from "base/auth/access.token";
 
 import Message from "components/Message";
-import { useHistory } from "react-router";
+import { useLocation } from "react-router";
 import { CoreContext } from "base/CoreContext";
 
 export default function Create({ display }) {
-   const history = useHistory();
+   const history = useLocation();
 
    const [database, setDatabase] = useState("");
    const [username, setUsername] = useState("");
