@@ -11,6 +11,8 @@ import Resume from "apps/resume/index";
 import Motor from 'apps/motor';
 import auth from 'base/auth/access.token';
 
+import "./scss/main.scss";
+
 const App = () => { 
     auth();
     return (

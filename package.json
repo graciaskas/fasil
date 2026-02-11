@@ -5,7 +5,7 @@
   "scripts": {
     "start": "concurrently \"npm start --prefix client\" \"npm start --prefix api\"",
     "dev": "concurrently \"npm start --prefix client\" \"npm run dev --prefix api\"",
-    "release":"cd client && npm run build && cd ../ && serve -s ./client/build"
+    "release": "cd client && npm run build && cd ../ && serve -s ./client/build"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/graciaskas/zeslap#readme",
   "dependencies": {
-    "concurrently": "^5.2.0"
+    "concurrently": "5.2.0"
   }
 }

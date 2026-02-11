@@ -1,6 +1,7 @@
 node_modules
 api/node_modules
 client/node_modules
+client/build
 .sh
 .dbshell
 .package-json.lock

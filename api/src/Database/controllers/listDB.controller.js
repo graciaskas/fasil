@@ -14,7 +14,8 @@ const listBD = (req, res) => {
         const connection =
             mongoose
                 .createConnection(
-                    `mongodb://${DB_USER}:${DB_PASSWORD}@localhost:27017/admin?authSource=admin`,
+                    'mongodb://localhost:27017/zeslap',
+                    // `mongodb://${DB_USER}:${DB_PASSWORD}@localhost:27017/admin?authSource=admin`,
                     options
                 );
         //check if connection fails
